@@ -12,7 +12,8 @@ namespace Runge_Kutta
 {
     public partial class Plotting_Form2 : Form
     {
-        
+        public static float[] POINTS_2D;
+
         public Plotting_Form2()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace Runge_Kutta
         {
 
             // create some test data, using our private computation module as inner class
-            ILArray<float> Pos = Computation.CreateData(4, 300);
+            ILArray<float> Pos = POINTS_2D;
 
             // setup the plot (modify as needed)
             ilPanel1.Scene.Add(new ILPlotCube(twoDMode: false) {

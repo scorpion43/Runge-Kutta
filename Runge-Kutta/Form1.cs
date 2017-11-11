@@ -60,7 +60,45 @@ namespace Runge_Kutta
 
         private void ShowSecondGraphButton_Click(object sender, EventArgs e)
         {
+            float[] pointsFor2DGraph = ChooseArrayPoints();
+            Plotting_Form2.POINTS_2D = pointsFor2DGraph;
             new Plotting_Form2().Show();
+        }
+
+
+        private float[] ChooseArrayPoints()
+        {
+            float[] pointsFor2DGraph = new float[1500];
+
+            if (XRadioButton.Checked)
+            {
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 0);
+            }
+            else if (YRadioButton.Checked)
+            {
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 1);
+            }
+            else if (ZRadioButton.Checked)
+            {
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 2);
+            }
+
+            return pointsFor2DGraph;
+        }
+
+        private float[] copyColumn2DArrayTo1DArray(ref float[,] source, int columnNr)
+        {
+            float[] destination = new float[1500];
+
+            //Debug.WriteLine("Rozpoczynam procedurę kopiowania");
+
+            for (int i = 0; i < 1500; i++)
+            {
+                ///Debug.WriteLine(i);
+                destination[i] = source[i, columnNr];
+            }
+
+            return destination;
         }
 
         private void AddValuesToListBoxes()
@@ -73,7 +111,7 @@ namespace Runge_Kutta
 
             for (int i = 0; i < 1500; i++)
             {
-                if (points[0, 0] == float.NaN && points[0, 1] == float.NaN && points[0,2] == float.NaN)
+                if (points[0, 0] == float.NaN && points[0, 1] == float.NaN && points[0, 2] == float.NaN)
                 {
                     break;
                 }
@@ -109,8 +147,6 @@ namespace Runge_Kutta
             ListBoxForX.SelectedIndex = index;
             ListBoxForY.SelectedIndex = index;
         }
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {

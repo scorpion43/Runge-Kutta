@@ -50,15 +50,13 @@ namespace Runge_Kutta
             });
             
 
-
-
             // register event handler for allowing updates on right mouse click:
-           /* ilPanel1.Scene.First<ILLinePlot>().MouseClick += (_s, _a) =>
+           /*ilPanel1.Scene.First<ILLinePlot>().MouseClick += (_s, _a) =>
             {
                 if (_a.Button == MouseButtons.Right)
                     Update(ILMath.rand(3, 30));
-            };
-            */
+            };*/
+            
         }
 
         /// <summary>
