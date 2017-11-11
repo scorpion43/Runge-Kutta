@@ -83,17 +83,17 @@ namespace Runge_Kutta.Services
 
         private float FunctionXPrim(float x, float y, float z)
         {
-            return h*  x * y - z;
+            return h * ( x * y - z);
         }
 
         private float FunctionYPrim(float x, float y)
         {
-            return h * x - y;
+            return h * (x - y);
         }
 
         private float FunctionZPrim(float x, float z)
         {
-            return h * x + 0.3f * z;
+            return h * (x + 0.3f * z);
         }
 
         private float GenerateNexValueOfTime(float prevVal, float n1, float n2, float n3, float n4)

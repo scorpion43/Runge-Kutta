@@ -13,7 +13,6 @@ D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Form1.
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Plotting_Form1.resources
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Properties.Resources.resources
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.csproj.GenerateResource.Cache
-D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.csproj.CoreCompileInputs.cache
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\bin\Debug\Runge-Kutta.pdb
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.exe
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.pdb
