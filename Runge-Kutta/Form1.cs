@@ -1,4 +1,5 @@
 ﻿using ILNumerics;
+using Runge_Kutta.Models;
 using Runge_Kutta.Services;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +22,17 @@ namespace Runge_Kutta
         public float[,] points = new float[1500, 3];
 
         private RungeKuttaService rungeKuttaService = new RungeKuttaService();
+        private PerceptronService pService = new PerceptronService();
+        private ResultOfTrainingSPL resultSPL;
+
+        private float learningRate = 0.1f;
 
         public float h;
         public float x0;
         public float y0;
         public float z0;
 
+        int actualIndex = 0;
 
         public Form1()
         {
@@ -40,7 +47,7 @@ namespace Runge_Kutta
             z0 = float.Parse(ZTextBox.Text);
 
             points = rungeKuttaService.GeneratePointsByRungeKutta4k(x0, y0, z0, h);
-            MessageBox.Show("Wygenerowano punkty.");
+            MessageBox.Show("Generating points complete.");
 
             Debug.WriteLine("Długość Tablicy POINTS = " + points.Length);
 
@@ -128,6 +135,8 @@ namespace Runge_Kutta
         {
             int index = ListBoxForX.SelectedIndex;
 
+            actualIndex = index;
+
             ListBoxForY.SelectedIndex = index;
             ListBoxForZ.SelectedIndex = index;
         }
@@ -135,6 +144,8 @@ namespace Runge_Kutta
         private void ListBoxForY_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = ListBoxForY.SelectedIndex;
+
+            actualIndex = index;
 
             ListBoxForX.SelectedIndex = index;
             ListBoxForZ.SelectedIndex = index;
@@ -144,8 +155,65 @@ namespace Runge_Kutta
         {
             int index = ListBoxForZ.SelectedIndex;
 
+            actualIndex = index;
+
             ListBoxForX.SelectedIndex = index;
             ListBoxForY.SelectedIndex = index;
+        }
+
+        private void TrainButton_Click(object sender, EventArgs e)
+        {
+            learningRate = 
+                float.Parse(LearningRateTB.Text);
+            resultSPL = pService.findWeightsAndThreshold(learningRate, ref points);
+
+            Debug.WriteLine("Learning Rate: " + learningRate);
+
+            MessageBox.Show("Training Complete.");
+
+            XResultLabel.Text = "For(X): w11: " + resultSPL.xResult.w1 
+                + ", w21: " + resultSPL.xResult.w2 + ", w31: " + resultSPL.xResult.w3
+                + ",  t1: " + resultSPL.xResult.t;
+
+            YResultLabel.Text = "For(Y): w12: " + resultSPL.yResult.w1
+                + ", w22: " + resultSPL.yResult.w2 + ", w32: " + resultSPL.yResult.w3
+                + ", t2: " + resultSPL.yResult.t;
+
+            ZResultLabel.Text = "For(Z): w13: " + resultSPL.zResult.w1
+                + ", w23: " + resultSPL.zResult.w2 + ", w33: " + resultSPL.zResult.w3
+                + ", t3: " + resultSPL.zResult.t;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (actualIndex == 0) {
+                MessageBox.Show("Index to test cannot be 0!");
+            }
+            else
+            {
+                int index = actualIndex - 1;
+                float gvx =
+                    points[index, 0] * resultSPL.xResult.w1 +
+                    points[index, 1] * resultSPL.xResult.w2 +
+                    points[index, 2] * resultSPL.xResult.w3 -
+                    resultSPL.xResult.t;
+
+                float gvy =
+                    points[index, 0] * resultSPL.yResult.w1 +
+                    points[index, 1] * resultSPL.yResult.w2 +
+                    points[index, 2] * resultSPL.yResult.w3 -
+                    resultSPL.yResult.t;
+
+                float gvz =
+                    points[index, 0] * resultSPL.zResult.w1 +
+                    points[index, 1] * resultSPL.zResult.w2 +
+                    points[index, 2] * resultSPL.zResult.w3 -
+                    resultSPL.zResult.t;
+
+                GVXLabel.Text = "X: " + gvx.ToString();
+                GVYLabel.Text = "Y: " + gvy.ToString();
+                GVZLabel.Text = "Z: " + gvz.ToString();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -164,6 +232,11 @@ namespace Runge_Kutta
         }
 
         private void ZTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

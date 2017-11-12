@@ -24,39 +24,26 @@ namespace Runge_Kutta
         {
 
             // create some test data, using our private computation module as inner class
-            //ILArray<float> Pos = Computation.CreateData(4, 300);
+            ILArray<float> Pos = POINTS;
 
             // setup the plot (modify as needed)
-
-          
-
-            ILArray<float> R = ILMath.tosingle(ILMath.randn(3, 1000));
-            // rotate the 'cigar'
-
-            ilPanel1.Scene.Add(new ILPlotCube(twoDMode: false)
-            {
-                // rotate plot cube
-                Rotation = Matrix4.Rotation(new Vector3(-1, 1, .1f), 0.4f),
-                // perspective projection
-                Projection = Projection.Perspective,
-                Children = {
-	            // add line plot, provide data as rows 
-	            new ILPoints {
-                    Positions =  POINTS,
-                    Colors = ILMath.tosingle(R),
-                    Color = null
+            ilPanel1.Scene.Add(new ILPlotCube(twoDMode: false) {
+                new ILLinePlot(Pos, tag: "mylineplot") {
+                    Line = {
+                        Width = 2,
+                        Color = Color.Red,
+                        Antialiasing = true,
+                        DashStyle = DashStyle.Dotted
+                    }
                 }
-            }
             });
-            
-
             // register event handler for allowing updates on right mouse click:
-           /*ilPanel1.Scene.First<ILLinePlot>().MouseClick += (_s, _a) =>
+            ilPanel1.Scene.First<ILLinePlot>().MouseClick += (_s, _a) =>
             {
                 if (_a.Button == MouseButtons.Right)
                     Update(ILMath.rand(3, 30));
-            };*/
-            
+            };
+
         }
 
         /// <summary>

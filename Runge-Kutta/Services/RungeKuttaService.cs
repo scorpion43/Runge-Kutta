@@ -29,7 +29,7 @@ namespace Runge_Kutta.Services
             {
                 float m1 = FunctionXPrim(x, y, z);
                 float k1 = FunctionYPrim(x, y);
-                float l1 = FunctionYPrim(x, z);
+                float l1 = FunctionZPrim(x, z);
 
                 float m2 = FunctionXPrim(x + 0.5f * m1, y + 0.5f * k1, z + 0.5f * l1);
                 float k2 = FunctionYPrim(x + 0.5f * m1, y + 0.5f * k1);
