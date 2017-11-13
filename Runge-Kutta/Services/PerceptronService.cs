@@ -10,9 +10,15 @@ namespace Runge_Kutta.Services
 {
     class PerceptronService
     {
+        private int epochs = 0;
+        private int countMax = 0;
 
-        public ResultOfTrainingSPL findWeightsAndThreshold(float learningRate, ref float[,] trainDataSet)
+        public ResultOfTrainingSPL findWeightsAndThreshold(float learningRate, ref float[,] trainDataSet,
+            int epochs, int countMax)
         {
+            this.epochs = epochs;
+            this.countMax = countMax;
+
             ResultForOneNeuron xResult =
                 findForOneNeuron(learningRate, ref trainDataSet, 0);
             ResultForOneNeuron yResult =
@@ -39,33 +45,37 @@ namespace Runge_Kutta.Services
             float newValue = 0.0f;
             float desireValue = 0.0f;
 
-            for (int i = 0; i < 99; i++)
+            for (int e = 0; e < epochs; e++)
             {
-                desireValue = trainDataSet[i + 1, index];
-
-                float x = trainDataSet[i, 0];
-                float y = trainDataSet[i, 1];
-                float z = trainDataSet[i, 2];
-
-                int count = 0;
-
-                do
+                for (int i = 0; i < 99; i++)
                 {
-                    newValue = x * w1 + y * w2 + z * w3 - t;
-                    if (newValue != desireValue)
-                    {
-                        w1 = w1 - learningRate * x * (newValue - desireValue);
-                        w2 = w2 - learningRate * y * (newValue - desireValue);
-                        w3 = w3 - learningRate * z * (newValue - desireValue);
-                        t = t + learningRate * (newValue - desireValue);
-                    }
-                    count++;    
-                }
-                while (newValue != desireValue && count != 1000);
+                    desireValue = trainDataSet[i + 1, index];
 
-                Debug.WriteLine("\n");
-                Debug.WriteLine("Circuit {0}", i);
-                Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
+                    float x = trainDataSet[i, 0];
+                    float y = trainDataSet[i, 1];
+                    float z = trainDataSet[i, 2];
+
+                    int count = 0;
+
+                    do
+                    {
+                        newValue = x * w1 + y * w2 + z * w3 - t;
+                        if (newValue != desireValue)
+                        {
+                            w1 = w1 - learningRate * x * (newValue - desireValue);
+                            w2 = w2 - learningRate * y * (newValue - desireValue);
+                            w3 = w3 - learningRate * z * (newValue - desireValue);
+                            t = t + learningRate * (newValue - desireValue);
+                        }
+                        count++;
+                    }
+                    while (newValue != desireValue && count != countMax);
+
+                    Debug.WriteLine("\n");
+                    Debug.WriteLine("Circuit {0}", i);
+                    Debug.WriteLine("count: " + count);
+                    Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
+                }
             }
 
             ResultForOneNeuron result 

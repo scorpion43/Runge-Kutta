@@ -40,6 +40,16 @@
             this.XTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LearningRateTB = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.GVZLabel = new System.Windows.Forms.Label();
+            this.GVYLabel = new System.Windows.Forms.Label();
+            this.GVXLabel = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.TrainButton = new System.Windows.Forms.Button();
+            this.ZResultLabel = new System.Windows.Forms.Label();
+            this.YResultLabel = new System.Windows.Forms.Label();
+            this.XResultLabel = new System.Windows.Forms.Label();
             this.ListBoxForZ = new System.Windows.Forms.ListBox();
             this.ListBoxForY = new System.Windows.Forms.ListBox();
             this.ListBoxForX = new System.Windows.Forms.ListBox();
@@ -51,16 +61,10 @@
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
-            this.XResultLabel = new System.Windows.Forms.Label();
-            this.YResultLabel = new System.Windows.Forms.Label();
-            this.ZResultLabel = new System.Windows.Forms.Label();
-            this.TrainButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.GVXLabel = new System.Windows.Forms.Label();
-            this.GVYLabel = new System.Windows.Forms.Label();
-            this.GVZLabel = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.LearningRateTB = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.EpochsTB = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.CountMaxTB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -181,6 +185,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CountMaxTB);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.EpochsTB);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.LearningRateTB);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.GVZLabel);
@@ -205,6 +213,106 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // LearningRateTB
+            // 
+            this.LearningRateTB.Location = new System.Drawing.Point(128, 148);
+            this.LearningRateTB.Name = "LearningRateTB";
+            this.LearningRateTB.Size = new System.Drawing.Size(63, 24);
+            this.LearningRateTB.TabIndex = 16;
+            this.LearningRateTB.Text = "0,01";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(18, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(104, 20);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Lerning rate:";
+            // 
+            // GVZLabel
+            // 
+            this.GVZLabel.AutoSize = true;
+            this.GVZLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GVZLabel.Location = new System.Drawing.Point(587, 394);
+            this.GVZLabel.Name = "GVZLabel";
+            this.GVZLabel.Size = new System.Drawing.Size(47, 20);
+            this.GVZLabel.TabIndex = 14;
+            this.GVZLabel.Text = "GVZ:";
+            // 
+            // GVYLabel
+            // 
+            this.GVYLabel.AutoSize = true;
+            this.GVYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GVYLabel.Location = new System.Drawing.Point(586, 343);
+            this.GVYLabel.Name = "GVYLabel";
+            this.GVYLabel.Size = new System.Drawing.Size(48, 20);
+            this.GVYLabel.TabIndex = 13;
+            this.GVYLabel.Text = "GVY:";
+            // 
+            // GVXLabel
+            // 
+            this.GVXLabel.AutoSize = true;
+            this.GVXLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GVXLabel.Location = new System.Drawing.Point(585, 288);
+            this.GVXLabel.Name = "GVXLabel";
+            this.GVXLabel.Size = new System.Drawing.Size(49, 20);
+            this.GVXLabel.TabIndex = 12;
+            this.GVXLabel.Text = "GVX:";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.button2.Location = new System.Drawing.Point(200, 190);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 46);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Test";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // TrainButton
+            // 
+            this.TrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.TrainButton.Location = new System.Drawing.Point(20, 190);
+            this.TrainButton.Name = "TrainButton";
+            this.TrainButton.Size = new System.Drawing.Size(154, 46);
+            this.TrainButton.TabIndex = 10;
+            this.TrainButton.Text = "Train";
+            this.TrainButton.UseVisualStyleBackColor = true;
+            this.TrainButton.Click += new System.EventHandler(this.TrainButton_Click);
+            // 
+            // ZResultLabel
+            // 
+            this.ZResultLabel.AutoSize = true;
+            this.ZResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ZResultLabel.Location = new System.Drawing.Point(16, 106);
+            this.ZResultLabel.Name = "ZResultLabel";
+            this.ZResultLabel.Size = new System.Drawing.Size(70, 20);
+            this.ZResultLabel.TabIndex = 9;
+            this.ZResultLabel.Text = "For Z(t):";
+            // 
+            // YResultLabel
+            // 
+            this.YResultLabel.AutoSize = true;
+            this.YResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.YResultLabel.Location = new System.Drawing.Point(16, 76);
+            this.YResultLabel.Name = "YResultLabel";
+            this.YResultLabel.Size = new System.Drawing.Size(71, 20);
+            this.YResultLabel.TabIndex = 8;
+            this.YResultLabel.Text = "For Y(t):";
+            // 
+            // XResultLabel
+            // 
+            this.XResultLabel.AutoSize = true;
+            this.XResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.XResultLabel.Location = new System.Drawing.Point(16, 48);
+            this.XResultLabel.Name = "XResultLabel";
+            this.XResultLabel.Size = new System.Drawing.Size(72, 20);
+            this.XResultLabel.TabIndex = 7;
+            this.XResultLabel.Text = "For X(t):";
             // 
             // ListBoxForZ
             // 
@@ -321,105 +429,41 @@
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
             // 
-            // XResultLabel
+            // label9
             // 
-            this.XResultLabel.AutoSize = true;
-            this.XResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.XResultLabel.Location = new System.Drawing.Point(16, 48);
-            this.XResultLabel.Name = "XResultLabel";
-            this.XResultLabel.Size = new System.Drawing.Size(72, 20);
-            this.XResultLabel.TabIndex = 7;
-            this.XResultLabel.Text = "For X(t):";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label9.Location = new System.Drawing.Point(240, 150);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 20);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Epochs:";
             // 
-            // YResultLabel
+            // EpochsTB
             // 
-            this.YResultLabel.AutoSize = true;
-            this.YResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.YResultLabel.Location = new System.Drawing.Point(16, 76);
-            this.YResultLabel.Name = "YResultLabel";
-            this.YResultLabel.Size = new System.Drawing.Size(71, 20);
-            this.YResultLabel.TabIndex = 8;
-            this.YResultLabel.Text = "For Y(t):";
+            this.EpochsTB.Location = new System.Drawing.Point(316, 148);
+            this.EpochsTB.Name = "EpochsTB";
+            this.EpochsTB.Size = new System.Drawing.Size(63, 24);
+            this.EpochsTB.TabIndex = 18;
+            this.EpochsTB.Text = "400";
             // 
-            // ZResultLabel
+            // label10
             // 
-            this.ZResultLabel.AutoSize = true;
-            this.ZResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ZResultLabel.Location = new System.Drawing.Point(16, 106);
-            this.ZResultLabel.Name = "ZResultLabel";
-            this.ZResultLabel.Size = new System.Drawing.Size(70, 20);
-            this.ZResultLabel.TabIndex = 9;
-            this.ZResultLabel.Text = "For Z(t):";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label10.Location = new System.Drawing.Point(417, 150);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 20);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "CountMax:";
             // 
-            // TrainButton
+            // CountMaxTB
             // 
-            this.TrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.TrainButton.Location = new System.Drawing.Point(20, 190);
-            this.TrainButton.Name = "TrainButton";
-            this.TrainButton.Size = new System.Drawing.Size(154, 46);
-            this.TrainButton.TabIndex = 10;
-            this.TrainButton.Text = "Train";
-            this.TrainButton.UseVisualStyleBackColor = true;
-            this.TrainButton.Click += new System.EventHandler(this.TrainButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button2.Location = new System.Drawing.Point(200, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 46);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Test";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // GVXLabel
-            // 
-            this.GVXLabel.AutoSize = true;
-            this.GVXLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVXLabel.Location = new System.Drawing.Point(585, 288);
-            this.GVXLabel.Name = "GVXLabel";
-            this.GVXLabel.Size = new System.Drawing.Size(49, 20);
-            this.GVXLabel.TabIndex = 12;
-            this.GVXLabel.Text = "GVX:";
-            // 
-            // GVYLabel
-            // 
-            this.GVYLabel.AutoSize = true;
-            this.GVYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVYLabel.Location = new System.Drawing.Point(586, 343);
-            this.GVYLabel.Name = "GVYLabel";
-            this.GVYLabel.Size = new System.Drawing.Size(48, 20);
-            this.GVYLabel.TabIndex = 13;
-            this.GVYLabel.Text = "GVY:";
-            // 
-            // GVZLabel
-            // 
-            this.GVZLabel.AutoSize = true;
-            this.GVZLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVZLabel.Location = new System.Drawing.Point(587, 394);
-            this.GVZLabel.Name = "GVZLabel";
-            this.GVZLabel.Size = new System.Drawing.Size(47, 20);
-            this.GVZLabel.TabIndex = 14;
-            this.GVZLabel.Text = "GVZ:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(18, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 20);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Lerning rate:";
-            // 
-            // LearningRateTB
-            // 
-            this.LearningRateTB.Location = new System.Drawing.Point(128, 148);
-            this.LearningRateTB.Name = "LearningRateTB";
-            this.LearningRateTB.Size = new System.Drawing.Size(63, 24);
-            this.LearningRateTB.TabIndex = 16;
-            this.LearningRateTB.Text = "0,01";
+            this.CountMaxTB.Location = new System.Drawing.Point(512, 148);
+            this.CountMaxTB.Name = "CountMaxTB";
+            this.CountMaxTB.Size = new System.Drawing.Size(63, 24);
+            this.CountMaxTB.TabIndex = 20;
+            this.CountMaxTB.Text = "1";
             // 
             // Form1
             // 
@@ -477,6 +521,10 @@
         private System.Windows.Forms.Button TrainButton;
         private System.Windows.Forms.TextBox LearningRateTB;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox EpochsTB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox CountMaxTB;
+        private System.Windows.Forms.Label label10;
     }
 }
 
