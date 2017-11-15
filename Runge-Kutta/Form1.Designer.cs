@@ -40,6 +40,10 @@
             this.XTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ErrorMaxTB = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.EpochsTB = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.LearningRateTB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.GVZLabel = new System.Windows.Forms.Label();
@@ -61,10 +65,6 @@
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.EpochsTB = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.CountMaxTB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -185,7 +185,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.CountMaxTB);
+            this.groupBox2.Controls.Add(this.ErrorMaxTB);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.EpochsTB);
             this.groupBox2.Controls.Add(this.label9);
@@ -213,6 +213,42 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // ErrorMaxTB
+            // 
+            this.ErrorMaxTB.Location = new System.Drawing.Point(512, 148);
+            this.ErrorMaxTB.Name = "ErrorMaxTB";
+            this.ErrorMaxTB.Size = new System.Drawing.Size(63, 24);
+            this.ErrorMaxTB.TabIndex = 20;
+            this.ErrorMaxTB.Text = "0,0001";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label10.Location = new System.Drawing.Point(417, 150);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 20);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "ErrorMax:";
+            // 
+            // EpochsTB
+            // 
+            this.EpochsTB.Location = new System.Drawing.Point(316, 148);
+            this.EpochsTB.Name = "EpochsTB";
+            this.EpochsTB.Size = new System.Drawing.Size(63, 24);
+            this.EpochsTB.TabIndex = 18;
+            this.EpochsTB.Text = "400";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label9.Location = new System.Drawing.Point(240, 150);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 20);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Epochs:";
             // 
             // LearningRateTB
             // 
@@ -429,42 +465,6 @@
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(240, 150);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 20);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Epochs:";
-            // 
-            // EpochsTB
-            // 
-            this.EpochsTB.Location = new System.Drawing.Point(316, 148);
-            this.EpochsTB.Name = "EpochsTB";
-            this.EpochsTB.Size = new System.Drawing.Size(63, 24);
-            this.EpochsTB.TabIndex = 18;
-            this.EpochsTB.Text = "400";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(417, 150);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 20);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "CountMax:";
-            // 
-            // CountMaxTB
-            // 
-            this.CountMaxTB.Location = new System.Drawing.Point(512, 148);
-            this.CountMaxTB.Name = "CountMaxTB";
-            this.CountMaxTB.Size = new System.Drawing.Size(63, 24);
-            this.CountMaxTB.TabIndex = 20;
-            this.CountMaxTB.Text = "1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -523,7 +523,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox EpochsTB;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox CountMaxTB;
+        private System.Windows.Forms.TextBox ErrorMaxTB;
         private System.Windows.Forms.Label label10;
     }
 }
