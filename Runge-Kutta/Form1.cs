@@ -165,7 +165,7 @@ namespace Runge_Kutta
         {
             learningRate = 
                 float.Parse(LearningRateTB.Text);
-            int epochs = Int16.Parse(EpochsTB.Text);
+            int epochs = Int32.Parse(EpochsTB.Text);
             int countMax = Int16.Parse(CountMaxTB.Text);
             resultSPL = pService.findWeightsAndThreshold(learningRate, ref points, epochs, countMax);
 

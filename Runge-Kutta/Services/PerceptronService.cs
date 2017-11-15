@@ -12,6 +12,7 @@ namespace Runge_Kutta.Services
     {
         private int epochs = 0;
         private int countMax = 0;
+        private float errorMax = 0.00001f;
 
         public ResultOfTrainingSPL findWeightsAndThreshold(float learningRate, ref float[,] trainDataSet,
             int epochs, int countMax)
@@ -47,7 +48,7 @@ namespace Runge_Kutta.Services
 
             for (int e = 0; e < epochs; e++)
             {
-                for (int i = 0; i < 99; i++)
+                for (int i = 0; i < 99; i+= 1)
                 {
                     desireValue = trainDataSet[i + 1, index];
 
@@ -71,16 +72,91 @@ namespace Runge_Kutta.Services
                     }
                     while (newValue != desireValue && count != countMax);
 
-                    Debug.WriteLine("\n");
-                    Debug.WriteLine("Circuit {0}", i);
-                    Debug.WriteLine("count: " + count);
-                    Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
+                    
                 }
+
+                Debug.WriteLine("\n");
+                Debug.WriteLine("Epoch ended: {0} for index: {1}", e, index);
+                Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
             }
 
             ResultForOneNeuron result 
                 = new ResultForOneNeuron(w1, w2, w3, t);
             
+
+            return result;
+        }
+
+        public ResultForOneNeuron findForOneNeuron2(float learningRate, ref float[,] trainDataSet, int index)
+        {
+            float w1, w2, w3, t;
+
+            Random rnd = new Random();
+            w1 = (float)rnd.NextDouble();
+            w2 = (float)rnd.NextDouble();
+            w3 = (float)rnd.NextDouble();
+            t = (float)rnd.NextDouble();
+
+            float newValue = 0.0f;
+            float desireValue = 0.0f;
+
+            for (int e = 0; e < epochs; e++)
+            {
+                float x;
+                float y;
+                float z;
+
+                for (int i = 0; i < 99; i += 15)
+                {
+                    desireValue = trainDataSet[i + 1, index];
+
+                    x = trainDataSet[i, 0];
+                    y = trainDataSet[i, 1];
+                    z = trainDataSet[i, 2];
+
+                    newValue = x * w1 + y * w2 + z * w3 - t;
+
+                    while (Math.Abs(newValue - desireValue) > errorMax) 
+                    {
+                        
+                        w1 = w1 - learningRate * x * (newValue - desireValue);
+                        w2 = w2 - learningRate * y * (newValue - desireValue);
+                        w3 = w3 - learningRate * z * (newValue - desireValue);
+                        t = t + learningRate * (newValue - desireValue);
+
+                        newValue = x * w1 + y * w2 + z * w3 - t;
+
+                    }
+
+                    Debug.WriteLine("\n");
+                    Debug.WriteLine("Circuit {0}", i);
+                    Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
+
+
+                }
+
+                int testIndex = rnd.Next(1, 1499);
+
+                x = trainDataSet[testIndex - 1, 0];
+                y = trainDataSet[testIndex - 1, 1];
+                z = trainDataSet[testIndex - 1, 2];
+
+                newValue = x * w1 + y * w2 + z * w3 - t;
+
+                float error = Math.Abs(trainDataSet[testIndex, index] - newValue);
+
+                if (error <= errorMax)
+                {
+                    Debug.WriteLine("========================= znalazło =====================");
+                    break;
+                }
+
+                
+            }
+
+            ResultForOneNeuron result
+                = new ResultForOneNeuron(w1, w2, w3, t);
+
 
             return result;
         }
