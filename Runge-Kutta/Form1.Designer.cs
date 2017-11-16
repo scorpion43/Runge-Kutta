@@ -65,6 +65,8 @@
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
+            this.AmountOfPointsTB = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -185,6 +187,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.AmountOfPointsTB);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.ErrorMaxTB);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.EpochsTB);
@@ -206,7 +210,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(17, 258);
+            this.groupBox2.Location = new System.Drawing.Point(12, 258);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(727, 525);
             this.groupBox2.TabIndex = 3;
@@ -216,17 +220,17 @@
             // 
             // ErrorMaxTB
             // 
-            this.ErrorMaxTB.Location = new System.Drawing.Point(512, 148);
+            this.ErrorMaxTB.Location = new System.Drawing.Point(461, 148);
             this.ErrorMaxTB.Name = "ErrorMaxTB";
-            this.ErrorMaxTB.Size = new System.Drawing.Size(63, 24);
+            this.ErrorMaxTB.Size = new System.Drawing.Size(118, 24);
             this.ErrorMaxTB.TabIndex = 20;
-            this.ErrorMaxTB.Text = "0,0001";
+            this.ErrorMaxTB.Text = "0,00001";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(417, 150);
+            this.label10.Location = new System.Drawing.Point(372, 150);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 20);
             this.label10.TabIndex = 19;
@@ -234,7 +238,7 @@
             // 
             // EpochsTB
             // 
-            this.EpochsTB.Location = new System.Drawing.Point(316, 148);
+            this.EpochsTB.Location = new System.Drawing.Point(291, 148);
             this.EpochsTB.Name = "EpochsTB";
             this.EpochsTB.Size = new System.Drawing.Size(63, 24);
             this.EpochsTB.TabIndex = 18;
@@ -244,7 +248,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(240, 150);
+            this.label9.Location = new System.Drawing.Point(221, 150);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 17;
@@ -272,7 +276,7 @@
             // 
             this.GVZLabel.AutoSize = true;
             this.GVZLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVZLabel.Location = new System.Drawing.Point(587, 394);
+            this.GVZLabel.Location = new System.Drawing.Point(592, 429);
             this.GVZLabel.Name = "GVZLabel";
             this.GVZLabel.Size = new System.Drawing.Size(47, 20);
             this.GVZLabel.TabIndex = 14;
@@ -282,7 +286,7 @@
             // 
             this.GVYLabel.AutoSize = true;
             this.GVYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVYLabel.Location = new System.Drawing.Point(586, 343);
+            this.GVYLabel.Location = new System.Drawing.Point(591, 378);
             this.GVYLabel.Name = "GVYLabel";
             this.GVYLabel.Size = new System.Drawing.Size(48, 20);
             this.GVYLabel.TabIndex = 13;
@@ -292,7 +296,7 @@
             // 
             this.GVXLabel.AutoSize = true;
             this.GVXLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVXLabel.Location = new System.Drawing.Point(585, 288);
+            this.GVXLabel.Location = new System.Drawing.Point(590, 323);
             this.GVXLabel.Name = "GVXLabel";
             this.GVXLabel.Size = new System.Drawing.Size(49, 20);
             this.GVXLabel.TabIndex = 12;
@@ -301,7 +305,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button2.Location = new System.Drawing.Point(200, 190);
+            this.button2.Location = new System.Drawing.Point(200, 226);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 46);
             this.button2.TabIndex = 11;
@@ -312,7 +316,7 @@
             // TrainButton
             // 
             this.TrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.TrainButton.Location = new System.Drawing.Point(20, 190);
+            this.TrainButton.Location = new System.Drawing.Point(20, 226);
             this.TrainButton.Name = "TrainButton";
             this.TrainButton.Size = new System.Drawing.Size(154, 46);
             this.TrainButton.TabIndex = 10;
@@ -354,7 +358,7 @@
             // 
             this.ListBoxForZ.FormattingEnabled = true;
             this.ListBoxForZ.ItemHeight = 18;
-            this.ListBoxForZ.Location = new System.Drawing.Point(421, 288);
+            this.ListBoxForZ.Location = new System.Drawing.Point(426, 323);
             this.ListBoxForZ.Name = "ListBoxForZ";
             this.ListBoxForZ.Size = new System.Drawing.Size(142, 184);
             this.ListBoxForZ.TabIndex = 6;
@@ -364,7 +368,7 @@
             // 
             this.ListBoxForY.FormattingEnabled = true;
             this.ListBoxForY.ItemHeight = 18;
-            this.ListBoxForY.Location = new System.Drawing.Point(212, 288);
+            this.ListBoxForY.Location = new System.Drawing.Point(217, 323);
             this.ListBoxForY.Name = "ListBoxForY";
             this.ListBoxForY.Size = new System.Drawing.Size(142, 184);
             this.ListBoxForY.TabIndex = 5;
@@ -374,7 +378,7 @@
             // 
             this.ListBoxForX.FormattingEnabled = true;
             this.ListBoxForX.ItemHeight = 18;
-            this.ListBoxForX.Location = new System.Drawing.Point(16, 288);
+            this.ListBoxForX.Location = new System.Drawing.Point(21, 323);
             this.ListBoxForX.Name = "ListBoxForX";
             this.ListBoxForX.Size = new System.Drawing.Size(142, 184);
             this.ListBoxForX.TabIndex = 4;
@@ -383,7 +387,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(453, 255);
+            this.label7.Location = new System.Drawing.Point(458, 290);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 18);
             this.label7.TabIndex = 3;
@@ -392,7 +396,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(260, 255);
+            this.label6.Location = new System.Drawing.Point(265, 290);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 18);
             this.label6.TabIndex = 2;
@@ -401,7 +405,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 255);
+            this.label5.Location = new System.Drawing.Point(59, 290);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 18);
             this.label5.TabIndex = 1;
@@ -434,7 +438,7 @@
             // ZRadioButton
             // 
             this.ZRadioButton.AutoSize = true;
-            this.ZRadioButton.Location = new System.Drawing.Point(154, 45);
+            this.ZRadioButton.Location = new System.Drawing.Point(295, 45);
             this.ZRadioButton.Name = "ZRadioButton";
             this.ZRadioButton.Size = new System.Drawing.Size(38, 21);
             this.ZRadioButton.TabIndex = 8;
@@ -445,7 +449,7 @@
             // YRadioButton
             // 
             this.YRadioButton.AutoSize = true;
-            this.YRadioButton.Location = new System.Drawing.Point(295, 45);
+            this.YRadioButton.Location = new System.Drawing.Point(154, 45);
             this.YRadioButton.Name = "YRadioButton";
             this.YRadioButton.Size = new System.Drawing.Size(38, 21);
             this.YRadioButton.TabIndex = 7;
@@ -465,11 +469,29 @@
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
             // 
+            // AmountOfPointsTB
+            // 
+            this.AmountOfPointsTB.Location = new System.Drawing.Point(169, 183);
+            this.AmountOfPointsTB.Name = "AmountOfPointsTB";
+            this.AmountOfPointsTB.Size = new System.Drawing.Size(63, 24);
+            this.AmountOfPointsTB.TabIndex = 22;
+            this.AmountOfPointsTB.Text = "100";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label11.Location = new System.Drawing.Point(21, 185);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(142, 20);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Amount of Points:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 795);
+            this.ClientSize = new System.Drawing.Size(771, 789);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -525,6 +547,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ErrorMaxTB;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox AmountOfPointsTB;
+        private System.Windows.Forms.Label label11;
     }
 }
 

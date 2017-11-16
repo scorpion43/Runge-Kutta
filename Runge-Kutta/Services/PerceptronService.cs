@@ -12,12 +12,14 @@ namespace Runge_Kutta.Services
     {
         private float errorMax = 0.00001f;
         private int epochs;
+        private int amountOfPoints;
 
         public ResultOfTrainingSPL findWeightsAndThreshold(float learningRate, ref float[,] trainDataSet,
-             int epochs, float errorMax)
+             int epochs, float errorMax, int amountOfPoints)
         {
             this.errorMax = errorMax;
             this.epochs = epochs;
+            this.amountOfPoints = amountOfPoints;
 
             ResultForOneNeuron xResult =
                 findForOneNeuron(learningRate, ref trainDataSet, 0);
@@ -51,7 +53,7 @@ namespace Runge_Kutta.Services
                 float y;
                 float z;
 
-                for (int i = 0; i < 99; i += 15)
+                for (int i = 0; i < amountOfPoints; i += 1)
                 {
                     desireValue = trainDataSet[i + 1, index];
 
@@ -61,9 +63,9 @@ namespace Runge_Kutta.Services
 
                     newValue = x * w1 + y * w2 + z * w3 - t;
 
-                    while (Math.Abs(newValue - desireValue) > errorMax) 
+                    while (Math.Abs(newValue - desireValue) > errorMax)
                     {
-                        
+
                         w1 = w1 - learningRate * x * (newValue - desireValue);
                         w2 = w2 - learningRate * y * (newValue - desireValue);
                         w3 = w3 - learningRate * z * (newValue - desireValue);
@@ -73,11 +75,11 @@ namespace Runge_Kutta.Services
 
                     }
 
-                    
+
 
 
                 }
-                /*
+                
                 int testIndex = rnd.Next(1, 1499);
 
                 x = trainDataSet[testIndex - 1, 0];
@@ -90,10 +92,10 @@ namespace Runge_Kutta.Services
 
                 if (error <= errorMax)
                 {
-                    Debug.WriteLine("========================= znalazło =====================");
+                    Debug.WriteLine("========================= finded =====================");
                     break;
                 }
-                */
+                
 
                 Debug.WriteLine("\n");
                 Debug.WriteLine("Epoch ended: {0}", e);
