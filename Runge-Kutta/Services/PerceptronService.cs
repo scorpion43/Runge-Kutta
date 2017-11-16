@@ -80,7 +80,7 @@ namespace Runge_Kutta.Services
 
                 }
                 
-                int testIndex = rnd.Next(1, 1499);
+               /* int testIndex = rnd.Next(1, 1499);
 
                 x = trainDataSet[testIndex - 1, 0];
                 y = trainDataSet[testIndex - 1, 1];
@@ -95,10 +95,10 @@ namespace Runge_Kutta.Services
                     Debug.WriteLine("========================= finded =====================");
                     break;
                 }
-                
+                */
 
                 Debug.WriteLine("\n");
-                Debug.WriteLine("Epoch ended: {0}", e);
+                Debug.WriteLine("Epoch ended: {0} for index {1}", e, index);
                 Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
 
             }
