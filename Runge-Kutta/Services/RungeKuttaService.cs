@@ -27,21 +27,21 @@ namespace Runge_Kutta.Services
 
             for (int i = 1; i < 1500; i++)
             {
-                float m1 = FunctionXPrim(x, y, z);
-                float k1 = FunctionYPrim(x, y);
-                float l1 = FunctionZPrim(x, z);
+                float m1 = FunctionXPrim(y);
+                float k1 = FunctionYPrim(x, z);
+                float l1 = FunctionZPrim(x, y, z);
 
-                float m2 = FunctionXPrim(x + 0.5f * m1, y + 0.5f * k1, z + 0.5f * l1);
-                float k2 = FunctionYPrim(x + 0.5f * m1, y + 0.5f * k1);
-                float l2 = FunctionZPrim(x + 0.5f * m1, z + 0.5f * l1);
+                float m2 = FunctionXPrim(y + 0.5f * k1);
+                float k2 = FunctionYPrim(x + 0.5f * m1, z + 0.5f * l1);
+                float l2 = FunctionZPrim(x + 0.5f * m1, y + 0.5f * k1, z + 0.5f * l1);
 
-                float m3 = FunctionXPrim(x + 0.5f * m2, y + 0.5f * k2, z + 0.5f * l2);
-                float k3 = FunctionYPrim(x + 0.5f * m2, y + 0.5f * k2);
-                float l3 = FunctionZPrim(x + 0.5f * m2, z + 0.5f * l2);
+                float m3 = FunctionXPrim(y + 0.5f * k2);
+                float k3 = FunctionYPrim(x + 0.5f * m2, z + 0.5f * l2);
+                float l3 = FunctionZPrim(x + 0.5f * m2, y + 0.5f * k2, z + 0.5f * l2);
 
-                float m4 = FunctionXPrim(x + 0.5f * m3, y + 0.5f * k3, z + 0.5f * l3);
-                float k4 = FunctionYPrim(x + 0.5f * m3, y + 0.5f * k3);
-                float l4 = FunctionZPrim(x + 0.5f * m3, z + 0.5f * l3);
+                float m4 = FunctionXPrim(y + 0.5f * k3);
+                float k4 = FunctionYPrim(x + 0.5f * m3, z + 0.5f * l3);
+                float l4 = FunctionZPrim(x + 0.5f * m3, y + 0.5f * k3, z + 0.5f * l3);
 
                 float nextX = GenerateNexValueOfTime(x, m1, m2, m3, m4);
                 float nextY = GenerateNexValueOfTime(y, k1, k2, k3, k4);
@@ -81,19 +81,19 @@ namespace Runge_Kutta.Services
             return points;
         }
 
-        private float FunctionXPrim(float x, float y, float z)
+        private float FunctionXPrim(float y)
         {
-            return h * ( x * y - z);
+            return h * -0.2f * y;
         }
 
-        private float FunctionYPrim(float x, float y)
+        private float FunctionYPrim(float x, float z)
         {
-            return h * (x - y);
+            return h * (x + z);
         }
 
-        private float FunctionZPrim(float x, float z)
+        private float FunctionZPrim(float x, float y, float z)
         {
-            return h * (x + 0.3f * z);
+            return h * (x + y * y - z);
         }
 
         private float GenerateNexValueOfTime(float prevVal, float n1, float n2, float n3, float n4)
