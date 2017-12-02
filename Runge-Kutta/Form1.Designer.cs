@@ -258,7 +258,7 @@
             this.TrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.TrainButton.Location = new System.Drawing.Point(19, 179);
             this.TrainButton.Name = "TrainButton";
-            this.TrainButton.Size = new System.Drawing.Size(677, 46);
+            this.TrainButton.Size = new System.Drawing.Size(686, 46);
             this.TrainButton.TabIndex = 10;
             this.TrainButton.Text = "Train";
             this.TrainButton.UseVisualStyleBackColor = true;
@@ -359,7 +359,7 @@
             // 
             // StartPointTB
             // 
-            this.StartPointTB.Location = new System.Drawing.Point(633, 43);
+            this.StartPointTB.Location = new System.Drawing.Point(640, 44);
             this.StartPointTB.Name = "StartPointTB";
             this.StartPointTB.Size = new System.Drawing.Size(63, 22);
             this.StartPointTB.TabIndex = 26;
@@ -409,7 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 671);
+            this.ClientSize = new System.Drawing.Size(753, 671);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
