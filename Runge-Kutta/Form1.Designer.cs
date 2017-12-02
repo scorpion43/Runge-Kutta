@@ -397,7 +397,7 @@
             this.CorrectionGraphButton.TabIndex = 24;
             this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
             this.CorrectionGraphButton.UseVisualStyleBackColor = true;
-            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
+            
             // 
             // Form1
             // 

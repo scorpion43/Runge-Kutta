@@ -60,8 +60,44 @@ namespace Runge_Kutta
 
         private void ShowFirstGraphButton_Click(object sender, EventArgs e)
         {
+            float[, ] realOutput3D = new float[1500, 3];
+
+            realOutput3D[0, 0] = points[0, 0];
+            realOutput3D[0, 1] = points[0, 1];
+            realOutput3D[0, 2] = points[0, 2];
+
+            float[] realOutput = getRealOtputForCorrectionGraph(1, 1500, resultSPL.xResult);
+            Debug.WriteLine("real outpu lenght " + realOutput.Length);
+            copyColumn1DArrayTo2DArray(ref realOutput, ref realOutput3D, 0);
+
+            Debug.WriteLine("Kolumna 1");
+
+            float[] realOutput2 = getRealOtputForCorrectionGraph(1, 1500, resultSPL.yResult);
+            copyColumn1DArrayTo2DArray(ref realOutput2, ref realOutput3D, 1);
+
+            Debug.WriteLine("Kolumna 2");
+
+            float[] realOutput3 = getRealOtputForCorrectionGraph(1, 1500, resultSPL.zResult);
+            copyColumn1DArrayTo2DArray(ref realOutput3, ref realOutput3D, 2);
+
+            Debug.WriteLine("Kolumna 3");
+
             Plotting_Form1.POINTS = points;
+            Plotting_Form1.realOutptut = realOutput3D;
             new Plotting_Form1().Show();
+        }
+
+        private void copyColumn1DArrayTo2DArray(ref float[] source, ref float[,] dest, int columnNr)
+        {
+
+            //Debug.WriteLine("Rozpoczynam procedurę kopiowania");
+
+            for (int i = 1; i < 1500; i++)
+            {
+                Debug.WriteLine(i);
+                dest[i, columnNr] = source[i];
+            }
+
         }
 
         private void ShowSecondGraphButton_Click(object sender, EventArgs e)
@@ -107,8 +143,6 @@ namespace Runge_Kutta
             return destination;
         }
 
-        
-
         private void TrainButton_Click(object sender, EventArgs e)
         {
             int epochs = Int32.Parse(EpochsTB.Text);
@@ -133,21 +167,7 @@ namespace Runge_Kutta
                 + ", t3: " + resultSPL.zResult.t;
         }
 
-        private void CorrectionGraphButton_Click(object sender, EventArgs e)
-        {
-            if (XRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 0);
-            }
-            else if (YRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 1);
-            }
-            else if (ZRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 2);
-            }
-        }
+
 
         //Correction graph for X
         private void button3_Click(object sender, EventArgs e)

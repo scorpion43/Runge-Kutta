@@ -14,6 +14,7 @@ namespace Runge_Kutta
     {
 
         public static ILArray<float> POINTS;
+        public static ILArray<float> realOutptut;
         public Plotting_Form1()
         {
             InitializeComponent();
@@ -32,6 +33,14 @@ namespace Runge_Kutta
                     Line = {
                         Width = 2,
                         Color = Color.Red,
+                        Antialiasing = true,
+                        DashStyle = DashStyle.Dotted
+                    }
+                },
+                new ILLinePlot(realOutptut, tag: "mylineplot") {
+                    Line = {
+                        Width = 2,
+                        Color = Color.Blue,
                         Antialiasing = true,
                         DashStyle = DashStyle.Dotted
                     }
