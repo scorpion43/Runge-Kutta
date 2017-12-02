@@ -14,7 +14,7 @@ namespace Runge_Kutta.Services
         private int epochs;
         private int amountOfPoints;
 
-        public ResultOfTrainingSPL findWeightsAndThreshold(float learningRate, ref float[,] trainDataSet,
+        public ResultOfTrainingSPL findWeightsAndThreshold(ref float[,] trainDataSet,
              int epochs, float errorMax, int amountOfPoints)
         {
             this.errorMax = errorMax;
@@ -22,11 +22,11 @@ namespace Runge_Kutta.Services
             this.amountOfPoints = amountOfPoints;
 
             ResultForOneNeuron xResult =
-                findForOneNeuron(learningRate, ref trainDataSet, 0);
+                findForOneNeuron(ref trainDataSet, 0);
             ResultForOneNeuron yResult =
-                findForOneNeuron(learningRate, ref trainDataSet, 1);
+                findForOneNeuron(ref trainDataSet, 1);
             ResultForOneNeuron zResult =
-                findForOneNeuron(learningRate, ref trainDataSet, 2);
+                findForOneNeuron(ref trainDataSet, 2);
 
             ResultOfTrainingSPL resultGroup =
                 new ResultOfTrainingSPL(xResult, yResult, zResult); 
@@ -34,7 +34,7 @@ namespace Runge_Kutta.Services
             return resultGroup;
         }
 
-        public ResultForOneNeuron findForOneNeuron(float learningRate, ref float[,] trainDataSet, int index)
+        public ResultForOneNeuron findForOneNeuron(ref float[,] trainDataSet, int index)
         {
             float w1, w2, w3, t;
 
@@ -53,6 +53,8 @@ namespace Runge_Kutta.Services
                 float y;
                 float z;
 
+                
+
                 for (int i = 0; i < amountOfPoints; i += 1)
                 {
                     desireValue = trainDataSet[i + 1, index];
@@ -60,6 +62,8 @@ namespace Runge_Kutta.Services
                     x = trainDataSet[i, 0];
                     y = trainDataSet[i, 1];
                     z = trainDataSet[i, 2];
+
+                    float learningRate = (float) (1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
 
                     newValue = x * w1 + y * w2 + z * w3 - t;
 
@@ -75,28 +79,8 @@ namespace Runge_Kutta.Services
 
                     }
 
-
-
-
                 }
                 
-               /* int testIndex = rnd.Next(1, 1499);
-
-                x = trainDataSet[testIndex - 1, 0];
-                y = trainDataSet[testIndex - 1, 1];
-                z = trainDataSet[testIndex - 1, 2];
-
-                newValue = x * w1 + y * w2 + z * w3 - t;
-
-                float error = Math.Abs(trainDataSet[testIndex, index] - newValue);
-
-                if (error <= errorMax)
-                {
-                    Debug.WriteLine("========================= finded =====================");
-                    break;
-                }
-                */
-
                 Debug.WriteLine("\n");
                 Debug.WriteLine("Epoch ended: {0} for index {1}", e, index);
                 Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);

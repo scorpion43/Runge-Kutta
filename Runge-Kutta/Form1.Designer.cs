@@ -46,22 +46,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.EpochsTB = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.LearningRateTB = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.GVZLabel = new System.Windows.Forms.Label();
-            this.GVYLabel = new System.Windows.Forms.Label();
-            this.GVXLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.TrainButton = new System.Windows.Forms.Button();
             this.ZResultLabel = new System.Windows.Forms.Label();
             this.YResultLabel = new System.Windows.Forms.Label();
             this.XResultLabel = new System.Windows.Forms.Label();
-            this.ListBoxForZ = new System.Windows.Forms.ListBox();
-            this.ListBoxForY = new System.Windows.Forms.ListBox();
-            this.ListBoxForX = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.ShowSecondGraphButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
@@ -70,6 +58,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.CorrectionGraphYButton = new System.Windows.Forms.Button();
             this.CorrectionGraphZButton = new System.Windows.Forms.Button();
+            this.CorrectionGraphButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -101,7 +90,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 218);
+            this.groupBox1.Size = new System.Drawing.Size(370, 208);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Initial Values";
@@ -190,6 +179,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CorrectionGraphButton);
             this.groupBox2.Controls.Add(this.CorrectionGraphZButton);
             this.groupBox2.Controls.Add(this.CorrectionGraphYButton);
             this.groupBox2.Controls.Add(this.button3);
@@ -199,26 +189,14 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.EpochsTB);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.LearningRateTB);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.GVZLabel);
-            this.groupBox2.Controls.Add(this.GVYLabel);
-            this.groupBox2.Controls.Add(this.GVXLabel);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.TrainButton);
             this.groupBox2.Controls.Add(this.ZResultLabel);
             this.groupBox2.Controls.Add(this.YResultLabel);
             this.groupBox2.Controls.Add(this.XResultLabel);
-            this.groupBox2.Controls.Add(this.ListBoxForZ);
-            this.groupBox2.Controls.Add(this.ListBoxForY);
-            this.groupBox2.Controls.Add(this.ListBoxForX);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox2.Location = new System.Drawing.Point(12, 258);
+            this.groupBox2.Location = new System.Drawing.Point(12, 245);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(727, 590);
+            this.groupBox2.Size = new System.Drawing.Size(727, 421);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
@@ -226,17 +204,17 @@
             // 
             // AmountOfPointsTB
             // 
-            this.AmountOfPointsTB.Location = new System.Drawing.Point(169, 183);
+            this.AmountOfPointsTB.Location = new System.Drawing.Point(318, 145);
             this.AmountOfPointsTB.Name = "AmountOfPointsTB";
             this.AmountOfPointsTB.Size = new System.Drawing.Size(63, 24);
             this.AmountOfPointsTB.TabIndex = 22;
-            this.AmountOfPointsTB.Text = "100";
+            this.AmountOfPointsTB.Text = "300";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label11.Location = new System.Drawing.Point(21, 185);
+            this.label11.Location = new System.Drawing.Point(170, 147);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(142, 20);
             this.label11.TabIndex = 21;
@@ -244,7 +222,7 @@
             // 
             // ErrorMaxTB
             // 
-            this.ErrorMaxTB.Location = new System.Drawing.Point(461, 148);
+            this.ErrorMaxTB.Location = new System.Drawing.Point(511, 145);
             this.ErrorMaxTB.Name = "ErrorMaxTB";
             this.ErrorMaxTB.Size = new System.Drawing.Size(118, 24);
             this.ErrorMaxTB.TabIndex = 20;
@@ -254,7 +232,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(372, 150);
+            this.label10.Location = new System.Drawing.Point(422, 147);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 20);
             this.label10.TabIndex = 19;
@@ -262,7 +240,7 @@
             // 
             // EpochsTB
             // 
-            this.EpochsTB.Location = new System.Drawing.Point(291, 148);
+            this.EpochsTB.Location = new System.Drawing.Point(91, 145);
             this.EpochsTB.Name = "EpochsTB";
             this.EpochsTB.Size = new System.Drawing.Size(63, 24);
             this.EpochsTB.TabIndex = 18;
@@ -272,75 +250,16 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(221, 150);
+            this.label9.Location = new System.Drawing.Point(21, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 17;
             this.label9.Text = "Epochs:";
             // 
-            // LearningRateTB
-            // 
-            this.LearningRateTB.Location = new System.Drawing.Point(128, 148);
-            this.LearningRateTB.Name = "LearningRateTB";
-            this.LearningRateTB.Size = new System.Drawing.Size(63, 24);
-            this.LearningRateTB.TabIndex = 16;
-            this.LearningRateTB.Text = "0,01";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label8.Location = new System.Drawing.Point(18, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 20);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Lerning rate:";
-            // 
-            // GVZLabel
-            // 
-            this.GVZLabel.AutoSize = true;
-            this.GVZLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVZLabel.Location = new System.Drawing.Point(592, 429);
-            this.GVZLabel.Name = "GVZLabel";
-            this.GVZLabel.Size = new System.Drawing.Size(47, 20);
-            this.GVZLabel.TabIndex = 14;
-            this.GVZLabel.Text = "GVZ:";
-            // 
-            // GVYLabel
-            // 
-            this.GVYLabel.AutoSize = true;
-            this.GVYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVYLabel.Location = new System.Drawing.Point(591, 378);
-            this.GVYLabel.Name = "GVYLabel";
-            this.GVYLabel.Size = new System.Drawing.Size(48, 20);
-            this.GVYLabel.TabIndex = 13;
-            this.GVYLabel.Text = "GVY:";
-            // 
-            // GVXLabel
-            // 
-            this.GVXLabel.AutoSize = true;
-            this.GVXLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.GVXLabel.Location = new System.Drawing.Point(590, 323);
-            this.GVXLabel.Name = "GVXLabel";
-            this.GVXLabel.Size = new System.Drawing.Size(49, 20);
-            this.GVXLabel.TabIndex = 12;
-            this.GVXLabel.Text = "GVX:";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button2.Location = new System.Drawing.Point(200, 226);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 46);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Test";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // TrainButton
             // 
             this.TrainButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.TrainButton.Location = new System.Drawing.Point(20, 226);
+            this.TrainButton.Location = new System.Drawing.Point(555, 197);
             this.TrainButton.Name = "TrainButton";
             this.TrainButton.Size = new System.Drawing.Size(154, 46);
             this.TrainButton.TabIndex = 10;
@@ -378,69 +297,12 @@
             this.XResultLabel.TabIndex = 7;
             this.XResultLabel.Text = "For X(t):";
             // 
-            // ListBoxForZ
-            // 
-            this.ListBoxForZ.FormattingEnabled = true;
-            this.ListBoxForZ.ItemHeight = 18;
-            this.ListBoxForZ.Location = new System.Drawing.Point(426, 323);
-            this.ListBoxForZ.Name = "ListBoxForZ";
-            this.ListBoxForZ.Size = new System.Drawing.Size(142, 184);
-            this.ListBoxForZ.TabIndex = 6;
-            this.ListBoxForZ.SelectedIndexChanged += new System.EventHandler(this.ListBoxForZ_SelectedIndexChanged);
-            // 
-            // ListBoxForY
-            // 
-            this.ListBoxForY.FormattingEnabled = true;
-            this.ListBoxForY.ItemHeight = 18;
-            this.ListBoxForY.Location = new System.Drawing.Point(217, 323);
-            this.ListBoxForY.Name = "ListBoxForY";
-            this.ListBoxForY.Size = new System.Drawing.Size(142, 184);
-            this.ListBoxForY.TabIndex = 5;
-            this.ListBoxForY.SelectedIndexChanged += new System.EventHandler(this.ListBoxForY_SelectedIndexChanged);
-            // 
-            // ListBoxForX
-            // 
-            this.ListBoxForX.FormattingEnabled = true;
-            this.ListBoxForX.ItemHeight = 18;
-            this.ListBoxForX.Location = new System.Drawing.Point(21, 323);
-            this.ListBoxForX.Name = "ListBoxForX";
-            this.ListBoxForX.Size = new System.Drawing.Size(142, 184);
-            this.ListBoxForX.TabIndex = 4;
-            this.ListBoxForX.SelectedIndexChanged += new System.EventHandler(this.ListBoxForX_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(458, 290);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 18);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "z(t)";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(265, 290);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 18);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "y(t)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(59, 290);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "x(t)";
-            // 
             // ShowSecondGraphButton
             // 
             this.ShowSecondGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ShowSecondGraphButton.Location = new System.Drawing.Point(16, 90);
             this.ShowSecondGraphButton.Name = "ShowSecondGraphButton";
-            this.ShowSecondGraphButton.Size = new System.Drawing.Size(317, 98);
+            this.ShowSecondGraphButton.Size = new System.Drawing.Size(145, 98);
             this.ShowSecondGraphButton.TabIndex = 5;
             this.ShowSecondGraphButton.Text = "Show Graph for choosen one";
             this.ShowSecondGraphButton.UseVisualStyleBackColor = true;
@@ -454,7 +316,7 @@
             this.groupBox3.Controls.Add(this.ShowSecondGraphButton);
             this.groupBox3.Location = new System.Drawing.Point(388, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(356, 213);
+            this.groupBox3.Size = new System.Drawing.Size(356, 203);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Show Graph 2D";
@@ -496,7 +358,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button3.Location = new System.Drawing.Point(20, 524);
+            this.button3.Location = new System.Drawing.Point(20, 282);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(143, 58);
             this.button3.TabIndex = 23;
@@ -507,7 +369,7 @@
             // CorrectionGraphYButton
             // 
             this.CorrectionGraphYButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CorrectionGraphYButton.Location = new System.Drawing.Point(216, 524);
+            this.CorrectionGraphYButton.Location = new System.Drawing.Point(199, 282);
             this.CorrectionGraphYButton.Name = "CorrectionGraphYButton";
             this.CorrectionGraphYButton.Size = new System.Drawing.Size(143, 58);
             this.CorrectionGraphYButton.TabIndex = 24;
@@ -518,7 +380,7 @@
             // CorrectionGraphZButton
             // 
             this.CorrectionGraphZButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CorrectionGraphZButton.Location = new System.Drawing.Point(426, 524);
+            this.CorrectionGraphZButton.Location = new System.Drawing.Point(376, 282);
             this.CorrectionGraphZButton.Name = "CorrectionGraphZButton";
             this.CorrectionGraphZButton.Size = new System.Drawing.Size(143, 60);
             this.CorrectionGraphZButton.TabIndex = 25;
@@ -526,11 +388,22 @@
             this.CorrectionGraphZButton.UseVisualStyleBackColor = true;
             this.CorrectionGraphZButton.Click += new System.EventHandler(this.CorrectionGraphZButton_Click);
             // 
+            // CorrectionGraphButton
+            // 
+            this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.CorrectionGraphButton.Location = new System.Drawing.Point(545, 304);
+            this.CorrectionGraphButton.Name = "CorrectionGraphButton";
+            this.CorrectionGraphButton.Size = new System.Drawing.Size(154, 98);
+            this.CorrectionGraphButton.TabIndex = 24;
+            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
+            this.CorrectionGraphButton.UseVisualStyleBackColor = true;
+            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 852);
+            this.ClientSize = new System.Drawing.Size(771, 693);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -561,12 +434,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ShowFirstGraphButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox ListBoxForZ;
-        private System.Windows.Forms.ListBox ListBoxForY;
-        private System.Windows.Forms.ListBox ListBoxForX;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ShowSecondGraphButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton ZRadioButton;
@@ -575,13 +442,7 @@
         private System.Windows.Forms.Label ZResultLabel;
         private System.Windows.Forms.Label YResultLabel;
         private System.Windows.Forms.Label XResultLabel;
-        private System.Windows.Forms.Label GVZLabel;
-        private System.Windows.Forms.Label GVYLabel;
-        private System.Windows.Forms.Label GVXLabel;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button TrainButton;
-        private System.Windows.Forms.TextBox LearningRateTB;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox EpochsTB;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ErrorMaxTB;
@@ -591,6 +452,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button CorrectionGraphZButton;
         private System.Windows.Forms.Button CorrectionGraphYButton;
+        private System.Windows.Forms.Button CorrectionGraphButton;
     }
 }
 

@@ -56,7 +56,6 @@ namespace Runge_Kutta
                 Debug.WriteLine("i = " + i + ", x = " + points[i, 0] + ", y = " + points[i, 1] + ", z = " + points[i, 2]);
             }*/
 
-            AddValuesToListBoxes();
         }
 
         private void ShowFirstGraphButton_Click(object sender, EventArgs e)
@@ -108,67 +107,14 @@ namespace Runge_Kutta
             return destination;
         }
 
-        private void AddValuesToListBoxes()
-        {
-            Debug.WriteLine("Sprawdzenie wyświetalania");
-
-            ListBoxForX.Items.Clear();
-            ListBoxForY.Items.Clear();
-            ListBoxForZ.Items.Clear();
-
-            for (int i = 0; i < 1500; i++)
-            {
-                if (points[0, 0] == float.NaN && points[0, 1] == float.NaN && points[0, 2] == float.NaN)
-                {
-                    break;
-                }
-
-                Debug.WriteLine("x = " + points[i, 0] + ", y = " + points[i, 1] + ", z = " + points[i, 2]);
-
-                ListBoxForX.Items.Add(i + ". " + points[i, 0].ToString("0.0000"));
-                ListBoxForY.Items.Add(i + ". " + points[i, 1].ToString("0.0000"));
-                ListBoxForZ.Items.Add(i + ". " + points[i, 2].ToString("0.0000"));
-            }
-        }
-
-        private void ListBoxForX_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = ListBoxForX.SelectedIndex;
-
-            actualIndex = index;
-
-            ListBoxForY.SelectedIndex = index;
-            ListBoxForZ.SelectedIndex = index;
-        }
-
-        private void ListBoxForY_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = ListBoxForY.SelectedIndex;
-
-            actualIndex = index;
-
-            ListBoxForX.SelectedIndex = index;
-            ListBoxForZ.SelectedIndex = index;
-        }
-
-        private void ListBoxForZ_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = ListBoxForZ.SelectedIndex;
-
-            actualIndex = index;
-
-            ListBoxForX.SelectedIndex = index;
-            ListBoxForY.SelectedIndex = index;
-        }
+        
 
         private void TrainButton_Click(object sender, EventArgs e)
         {
-            learningRate = 
-                float.Parse(LearningRateTB.Text);
             int epochs = Int32.Parse(EpochsTB.Text);
             float errorMax = float.Parse(ErrorMaxTB.Text);
             int amountOfPoints = Int32.Parse(AmountOfPointsTB.Text);
-            resultSPL = pService.findWeightsAndThreshold(learningRate, ref points, epochs, errorMax, amountOfPoints);
+            resultSPL = pService.findWeightsAndThreshold(ref points, epochs, errorMax, amountOfPoints);
 
             Debug.WriteLine("Learning Rate: " + learningRate);
 
@@ -187,35 +133,19 @@ namespace Runge_Kutta
                 + ", t3: " + resultSPL.zResult.t;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CorrectionGraphButton_Click(object sender, EventArgs e)
         {
-            if (actualIndex == 0) {
-                MessageBox.Show("Index to test cannot be 0!");
-            }
-            else
+            if (XRadioButton.Checked)
             {
-                int index = actualIndex - 1;
-                float gvx =
-                    points[index, 0] * resultSPL.xResult.w1 +
-                    points[index, 1] * resultSPL.xResult.w2 +
-                    points[index, 2] * resultSPL.xResult.w3 -
-                    resultSPL.xResult.t;
-
-                float gvy =
-                    points[index, 0] * resultSPL.yResult.w1 +
-                    points[index, 1] * resultSPL.yResult.w2 +
-                    points[index, 2] * resultSPL.yResult.w3 -
-                    resultSPL.yResult.t;
-
-                float gvz =
-                    points[index, 0] * resultSPL.zResult.w1 +
-                    points[index, 1] * resultSPL.zResult.w2 +
-                    points[index, 2] * resultSPL.zResult.w3 -
-                    resultSPL.zResult.t;
-
-                GVXLabel.Text = "X: " + gvx.ToString();
-                GVYLabel.Text = "Y: " + gvy.ToString();
-                GVZLabel.Text = "Z: " + gvz.ToString();
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 0);
+            }
+            else if (YRadioButton.Checked)
+            {
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 1);
+            }
+            else if (ZRadioButton.Checked)
+            {
+                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 2);
             }
         }
 
@@ -301,6 +231,6 @@ namespace Runge_Kutta
 
         }
 
-       
+        
     }
 }
