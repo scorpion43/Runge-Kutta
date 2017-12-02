@@ -106,9 +106,7 @@ namespace Runge_Kutta
 
             return destination;
         }
-
-        
-
+   
         private void TrainButton_Click(object sender, EventArgs e)
         {
             int epochs = Int32.Parse(EpochsTB.Text);
@@ -133,14 +131,42 @@ namespace Runge_Kutta
                 + ", t3: " + resultSPL.zResult.t;
         }
 
+        private void CorrectionGraphButton_Click(object sender, EventArgs e)
+        {
+            showProperCorrectionGraph();
+        }
+
+        private void showProperCorrectionGraph()
+        {
+            int startPoint = Int32.Parse(StartPointTB.Text);
+            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
+
+            if (XRadioButton.Checked)
+            {
+                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
+                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
+            }
+            else if (YRadioButton.Checked)
+            {
+                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
+                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
+            }
+            else if (ZRadioButton.Checked)
+            {
+                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
+                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
+            }
+
+            new CorrectionGraph().Show();
+        }
+
 
         //Correction graph for X
         private void button3_Click(object sender, EventArgs e)
         {
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
+            
             new CorrectionGraph().Show();
         }
 
@@ -148,8 +174,7 @@ namespace Runge_Kutta
         {
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
+            
             new CorrectionGraph().Show();
         }
 
@@ -157,8 +182,7 @@ namespace Runge_Kutta
         {
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
+            
             new CorrectionGraph().Show();
         }
 
@@ -226,5 +250,7 @@ namespace Runge_Kutta
         {
 
         }
+
+        
     }
 }
