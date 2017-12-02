@@ -44,6 +44,12 @@ namespace Runge_Kutta
                         Antialiasing = true,
                         DashStyle = DashStyle.Dotted
                     }
+                },
+                new ILLegend(@"Desired Output",
+                             @"Real Output") {
+                    // legends are regular scene graph objects. This gives you complete freedom for 
+                    // further configuration ...
+                    Background = { Color = Color.FromArgb(210,Color.White) }
                 }
 
             });
