@@ -17,3 +17,4 @@ D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\bin\Debug\Runge-Kutta.pdb
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.exe
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.pdb
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Plotting_Form2.resources
+D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.CorrectionGraph.resources

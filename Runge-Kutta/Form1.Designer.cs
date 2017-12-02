@@ -40,6 +40,8 @@
             this.XTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AmountOfPointsTB = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.ErrorMaxTB = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.EpochsTB = new System.Windows.Forms.TextBox();
@@ -65,8 +67,9 @@
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
-            this.AmountOfPointsTB = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.CorrectionGraphYButton = new System.Windows.Forms.Button();
+            this.CorrectionGraphZButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -187,6 +190,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CorrectionGraphZButton);
+            this.groupBox2.Controls.Add(this.CorrectionGraphYButton);
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.AmountOfPointsTB);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.ErrorMaxTB);
@@ -212,11 +218,29 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.groupBox2.Location = new System.Drawing.Point(12, 258);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(727, 525);
+            this.groupBox2.Size = new System.Drawing.Size(727, 590);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // AmountOfPointsTB
+            // 
+            this.AmountOfPointsTB.Location = new System.Drawing.Point(169, 183);
+            this.AmountOfPointsTB.Name = "AmountOfPointsTB";
+            this.AmountOfPointsTB.Size = new System.Drawing.Size(63, 24);
+            this.AmountOfPointsTB.TabIndex = 22;
+            this.AmountOfPointsTB.Text = "100";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label11.Location = new System.Drawing.Point(21, 185);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(142, 20);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Amount of Points:";
             // 
             // ErrorMaxTB
             // 
@@ -242,7 +266,7 @@
             this.EpochsTB.Name = "EpochsTB";
             this.EpochsTB.Size = new System.Drawing.Size(63, 24);
             this.EpochsTB.TabIndex = 18;
-            this.EpochsTB.Text = "400";
+            this.EpochsTB.Text = "1000";
             // 
             // label9
             // 
@@ -469,29 +493,44 @@
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
             // 
-            // AmountOfPointsTB
+            // button3
             // 
-            this.AmountOfPointsTB.Location = new System.Drawing.Point(169, 183);
-            this.AmountOfPointsTB.Name = "AmountOfPointsTB";
-            this.AmountOfPointsTB.Size = new System.Drawing.Size(63, 24);
-            this.AmountOfPointsTB.TabIndex = 22;
-            this.AmountOfPointsTB.Text = "100";
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.button3.Location = new System.Drawing.Point(20, 524);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(143, 58);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Correction Graph for X";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label11
+            // CorrectionGraphYButton
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label11.Location = new System.Drawing.Point(21, 185);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(142, 20);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Amount of Points:";
+            this.CorrectionGraphYButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.CorrectionGraphYButton.Location = new System.Drawing.Point(216, 524);
+            this.CorrectionGraphYButton.Name = "CorrectionGraphYButton";
+            this.CorrectionGraphYButton.Size = new System.Drawing.Size(143, 58);
+            this.CorrectionGraphYButton.TabIndex = 24;
+            this.CorrectionGraphYButton.Text = "Correction Graph for Y";
+            this.CorrectionGraphYButton.UseVisualStyleBackColor = true;
+            this.CorrectionGraphYButton.Click += new System.EventHandler(this.CorrectionGraphYButton_Click);
+            // 
+            // CorrectionGraphZButton
+            // 
+            this.CorrectionGraphZButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.CorrectionGraphZButton.Location = new System.Drawing.Point(426, 524);
+            this.CorrectionGraphZButton.Name = "CorrectionGraphZButton";
+            this.CorrectionGraphZButton.Size = new System.Drawing.Size(143, 60);
+            this.CorrectionGraphZButton.TabIndex = 25;
+            this.CorrectionGraphZButton.Text = "Correction Graph for Z";
+            this.CorrectionGraphZButton.UseVisualStyleBackColor = true;
+            this.CorrectionGraphZButton.Click += new System.EventHandler(this.CorrectionGraphZButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 789);
+            this.ClientSize = new System.Drawing.Size(771, 852);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -549,6 +588,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox AmountOfPointsTB;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CorrectionGraphZButton;
+        private System.Windows.Forms.Button CorrectionGraphYButton;
     }
 }
 

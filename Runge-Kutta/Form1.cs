@@ -219,6 +219,63 @@ namespace Runge_Kutta
             }
         }
 
+        //Correction graph for X
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.xResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, 1, 1499);
+            new CorrectionGraph().Show();
+        }
+
+        private void CorrectionGraphYButton_Click(object sender, EventArgs e)
+        {
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.yResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, 1, 1499);
+            new CorrectionGraph().Show();
+        }
+
+        private void CorrectionGraphZButton_Click(object sender, EventArgs e)
+        {
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.zResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, 1, 1499);
+            new CorrectionGraph().Show();
+        }
+
+        private float[] getDesiredOutputForCorrectionGraph(ref float[,] source, int columnNr, int start, int amount)
+        {
+            float[] destination = new float[amount];
+
+            //Debug.WriteLine("Rozpoczynam procedurę kopiowania");
+
+            for (int i = start, index = 0; i < start + amount; i++, index++)
+            {
+                ///Debug.WriteLine(i);
+                destination[index] = source[i, columnNr];
+            }
+
+            return destination;
+        }
+
+        private float[] getRealOtputForCorrectionGraph(int start,
+            int amount, ResultForOneNeuron dataToCount)
+        {
+            float[] destination = new float[amount];
+
+            //Debug.WriteLine("Rozpoczynam procedurę kopiowania");
+
+            for (int i = start - 1, index = 0; i < (start + amount - 1); i++, index++)
+            {
+                ///Debug.WriteLine(i);
+
+                destination[index] = points[i, 0] * dataToCount.w1 +
+                    points[i, 1] * dataToCount.w2 +
+                    points[i, 2] * dataToCount.w3 -
+                    dataToCount.t;
+            }
+
+            return destination;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -244,6 +301,6 @@ namespace Runge_Kutta
 
         }
 
-        
+       
     }
 }
