@@ -133,41 +133,32 @@ namespace Runge_Kutta
                 + ", t3: " + resultSPL.zResult.t;
         }
 
-        private void CorrectionGraphButton_Click(object sender, EventArgs e)
-        {
-            if (XRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 0);
-            }
-            else if (YRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 1);
-            }
-            else if (ZRadioButton.Checked)
-            {
-                pointsFor2DGraph = copyColumn2DArrayTo1DArray(ref points, 2);
-            }
-        }
 
         //Correction graph for X
         private void button3_Click(object sender, EventArgs e)
         {
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.xResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, 1, 1499);
+            int startPoint = Int32.Parse(StartPointTB.Text);
+            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
             new CorrectionGraph().Show();
         }
 
         private void CorrectionGraphYButton_Click(object sender, EventArgs e)
         {
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.yResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, 1, 1499);
+            int startPoint = Int32.Parse(StartPointTB.Text);
+            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
             new CorrectionGraph().Show();
         }
 
         private void CorrectionGraphZButton_Click(object sender, EventArgs e)
         {
-            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(1, 1499, resultSPL.zResult);
-            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, 1, 1499);
+            int startPoint = Int32.Parse(StartPointTB.Text);
+            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
+            CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
+            CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
             new CorrectionGraph().Show();
         }
 
@@ -231,6 +222,9 @@ namespace Runge_Kutta
 
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
