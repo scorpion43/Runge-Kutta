@@ -10,11 +10,6 @@ namespace Runge_Kutta.Services
 {
     class PerceptronService
     {
-        
-        
-        
-
-      
 
         public ResultOfTrainingSPL findWeightsAndThreshold(ref float[,] trainDataSet,
              int epochs, float errorMax, int amountOfPoints)
@@ -44,6 +39,7 @@ namespace Runge_Kutta.Services
             w9 = (float) rnd.NextDouble();
             t3 = (float) rnd.NextDouble();
 
+            Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
 
             for (int e = 0; e < epochs; e++)
             {
@@ -74,7 +70,7 @@ namespace Runge_Kutta.Services
                     w1 = w1 - learningRate * x * (newValueX - desireValueX);
                     w2 = w2 - learningRate * y * (newValueX - desireValueX);
                     w3 = w3 - learningRate * z * (newValueX - desireValueX);
-                    t1 = t1 + learningRate * (newValueX - desireValueY);
+                    t1 = t1 + learningRate * (newValueX - desireValueX);
 
                     w4 = w4 - learningRate * x * (newValueY - desireValueY);
                     w5 = w5 - learningRate * y * (newValueY - desireValueY);
@@ -95,6 +91,7 @@ namespace Runge_Kutta.Services
                     
                 }
 
+                Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
                 Debug.WriteLine("Różnica między błędami: " + (errorPrev - errorS) + "dla epoki: " + e);
                 errorPrev = errorS;
 

@@ -26,23 +26,36 @@ namespace Runge_Kutta
 
             // create some test data, using our private computation module as inner class
             ILArray<float> Pos = Computation.CreateData(4, 300);
+            
+            Color color1 = System.Drawing.ColorTranslator.FromHtml("#1D8C00"); 
+            Color color2 = System.Drawing.ColorTranslator.FromHtml("#FF3100");
 
             // setup the plot (modify as needed)
             ilPanel1.Scene.Add(new ILPlotCube(twoDMode: false) {
                 new ILLinePlot(desiredOutput, tag: "mylineplot") {
                     Line = {
                         Width = 2,
-                        Color = Color.Red,
-                        
+                        Color = Color.Green,
                         DashStyle = DashStyle.Dotted
+                    },
+                    Marker =
+                    {
+                        Size = 4,
+                        Style = MarkerStyle.Rectangle,
+                        ColorOverride = color1
                     }
                 },
                 new ILLinePlot(realOutput, tag: "mylineplot") {
                     Line = {
                         Width = 2,
-                        Color = Color.Blue,
-                        
+                        Color = color2,
                         DashStyle = DashStyle.Dotted
+                    },
+                    Marker =
+                    {
+                        Size = 4,
+                        Style = MarkerStyle.Rectangle,
+                        ColorOverride = color2
                     }
                 },
                 new ILLegend(@"Runge Kutta",

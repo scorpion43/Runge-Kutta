@@ -145,6 +145,18 @@ namespace Runge_Kutta
             {
                 CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
                 CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
+
+                Debug.WriteLine("Desired ouput: \n");
+                foreach (float element in CorrectionGraph.desiredOutput)
+                {
+                    Debug.WriteLine(element);
+                }
+
+                Debug.WriteLine("Real ouput: \n");
+                foreach (float element in CorrectionGraph.realOutput)
+                {
+                    Debug.WriteLine(element);
+                }
             }
             else if (YRadioButton.Checked)
             {
@@ -159,33 +171,7 @@ namespace Runge_Kutta
 
             new CorrectionGraph().Show();
         }
-
-
-        //Correction graph for X
-        private void button3_Click(object sender, EventArgs e)
-        {
-            int startPoint = Int32.Parse(StartPointTB.Text);
-            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            
-            new CorrectionGraph().Show();
-        }
-
-        private void CorrectionGraphYButton_Click(object sender, EventArgs e)
-        {
-            int startPoint = Int32.Parse(StartPointTB.Text);
-            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            
-            new CorrectionGraph().Show();
-        }
-
-        private void CorrectionGraphZButton_Click(object sender, EventArgs e)
-        {
-            int startPoint = Int32.Parse(StartPointTB.Text);
-            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
-            
-            new CorrectionGraph().Show();
-        }
-
+       
         private float[] getDesiredOutputForCorrectionGraph(ref float[,] source, int columnNr, int start, int amount)
         {
             float[] destination = new float[amount];
@@ -194,7 +180,7 @@ namespace Runge_Kutta
 
             for (int i = start, index = 0; i < start + amount; i++, index++)
             {
-                Debug.WriteLine(source[i, columnNr]);
+                //Debug.WriteLine(source[i, columnNr]);
                 destination[index] = source[i, columnNr];
             }
 
@@ -221,35 +207,7 @@ namespace Runge_Kutta
             return destination;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ZTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         
     }

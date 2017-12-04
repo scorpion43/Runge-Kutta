@@ -95,7 +95,7 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Initial Values";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // HTextBox
             // 
@@ -132,7 +132,7 @@
             this.ZTextBox.Size = new System.Drawing.Size(63, 24);
             this.ZTextBox.TabIndex = 5;
             this.ZTextBox.Text = "1";
-            this.ZTextBox.TextChanged += new System.EventHandler(this.ZTextBox_TextChanged);
+       
             // 
             // label3
             // 
@@ -176,7 +176,7 @@
             this.label1.Size = new System.Drawing.Size(33, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "x(0)";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+      
             // 
             // groupBox2
             // 
@@ -197,7 +197,7 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+         
             // 
             // AmountOfPointsTB
             // 
@@ -364,7 +364,7 @@
             this.StartPointTB.Size = new System.Drawing.Size(63, 22);
             this.StartPointTB.TabIndex = 26;
             this.StartPointTB.Text = "300";
-            this.StartPointTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+ 
             // 
             // label5
             // 
@@ -415,7 +415,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
