@@ -12,7 +12,7 @@ namespace Runge_Kutta.Services
     {
 
         public ResultOfTrainingSPL findWeightsAndThreshold(ref float[,] trainDataSet,
-             int epochs, float errorMax, int amountOfPoints)
+              float errorMax, int amountOfPoints)
         {
             float w1, w2, w3, t1;
             float w4, w5, w6, t2;
@@ -20,7 +20,7 @@ namespace Runge_Kutta.Services
 
             float errorS = 0.0f;
             float sumError = 0.0f;
-            float errorPrev = 0.0f;
+            float sumErrorPrev = 0.0f;
 
 
             Random rnd = new Random();
@@ -39,9 +39,11 @@ namespace Runge_Kutta.Services
             w9 = (float) rnd.NextDouble();
             t3 = (float) rnd.NextDouble();
 
-            Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
+            //Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
 
-            for (int e = 0; e < epochs; e++)
+            float sub;
+
+            do
             {
                 float x;
                 float y;
@@ -61,7 +63,7 @@ namespace Runge_Kutta.Services
                     y = trainDataSet[i, 1];
                     z = trainDataSet[i, 2];
 
-                    float learningRate = (float) (1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
+                    float learningRate = (float)(1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
 
                     newValueX = x * w1 + y * w2 + z * w3 - t1;
                     newValueY = x * w4 + y * w5 + z * w6 - t2;
@@ -77,7 +79,7 @@ namespace Runge_Kutta.Services
                     w6 = w6 - learningRate * z * (newValueY - desireValueY);
                     t2 = t2 + learningRate * (newValueY - desireValueY);
 
-                    w7 = w7 - learningRate * x * (newValueZ  - desireValueZ);
+                    w7 = w7 - learningRate * x * (newValueZ - desireValueZ);
                     w8 = w8 - learningRate * y * (newValueZ - desireValueZ);
                     w9 = w9 - learningRate * z * (newValueZ - desireValueZ);
                     t3 = t3 + learningRate * (newValueZ - desireValueZ);
@@ -88,18 +90,20 @@ namespace Runge_Kutta.Services
 
                     sumError += errorS;
 
-                    
+
                 }
 
-                Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
-                Debug.WriteLine("Różnica między błędami: " + (errorPrev - errorS) + "dla epoki: " + e);
-                errorPrev = errorS;
+                //Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
 
-                Debug.WriteLine("");
-                
-                
+                Debug.WriteLine((sumError / 2) - (sumErrorPrev / 2));
+
+                sub = Math.Abs((sumError / 2) - (sumErrorPrev / 2));
+
+                sumErrorPrev = sumError;
+                sumError = 0;
 
             }
+            while (sub > errorMax);
 
             Debug.WriteLine(sumError / 2);
 

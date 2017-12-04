@@ -32,8 +32,6 @@ namespace Runge_Kutta
         public float y0;
         public float z0;
 
-        int actualIndex = 0;
-
         public Form1()
         {
             InitializeComponent();
@@ -109,10 +107,10 @@ namespace Runge_Kutta
    
         private void TrainButton_Click(object sender, EventArgs e)
         {
-            int epochs = Int32.Parse(EpochsTB.Text);
+            
             float errorMax = float.Parse(ErrorMaxTB.Text);
             int amountOfPoints = Int32.Parse(AmountOfPointsTB.Text);
-            resultSPL = pService.findWeightsAndThreshold(ref points, epochs, errorMax, amountOfPoints);
+            resultSPL = pService.findWeightsAndThreshold(ref points, errorMax, amountOfPoints);
 
             Debug.WriteLine("Learning Rate: " + learningRate);
 
@@ -207,8 +205,14 @@ namespace Runge_Kutta
             return destination;
         }
 
-       
+        private void StartPointTB_TextChanged(object sender, EventArgs e)
+        {
 
-        
+        }
+
+        private void AmountOfPointsToShowTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

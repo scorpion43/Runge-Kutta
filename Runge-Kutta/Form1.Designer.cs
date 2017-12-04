@@ -44,22 +44,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.ErrorMaxTB = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.EpochsTB = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.TrainButton = new System.Windows.Forms.Button();
             this.ZResultLabel = new System.Windows.Forms.Label();
             this.YResultLabel = new System.Windows.Forms.Label();
             this.XResultLabel = new System.Windows.Forms.Label();
             this.ShowSecondGraphButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CorrectionGraphButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.StartPointTB = new System.Windows.Forms.TextBox();
+            this.AmountOfPointsToShowTB = new System.Windows.Forms.TextBox();
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
-            this.StartPointTB = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AmountOfPointsToShowTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CorrectionGraphButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,7 +93,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Initial Values";
-            
             // 
             // HTextBox
             // 
@@ -132,7 +129,6 @@
             this.ZTextBox.Size = new System.Drawing.Size(63, 24);
             this.ZTextBox.TabIndex = 5;
             this.ZTextBox.Text = "1";
-       
             // 
             // label3
             // 
@@ -176,7 +172,6 @@
             this.label1.Size = new System.Drawing.Size(33, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "x(0)";
-      
             // 
             // groupBox2
             // 
@@ -184,8 +179,6 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.ErrorMaxTB);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.EpochsTB);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.TrainButton);
             this.groupBox2.Controls.Add(this.ZResultLabel);
             this.groupBox2.Controls.Add(this.YResultLabel);
@@ -197,11 +190,10 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Training Option";
-         
             // 
             // AmountOfPointsTB
             // 
-            this.AmountOfPointsTB.Location = new System.Drawing.Point(316, 35);
+            this.AmountOfPointsTB.Location = new System.Drawing.Point(167, 35);
             this.AmountOfPointsTB.Name = "AmountOfPointsTB";
             this.AmountOfPointsTB.Size = new System.Drawing.Size(63, 24);
             this.AmountOfPointsTB.TabIndex = 22;
@@ -211,7 +203,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label11.Location = new System.Drawing.Point(168, 37);
+            this.label11.Location = new System.Drawing.Point(19, 37);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(142, 20);
             this.label11.TabIndex = 21;
@@ -219,39 +211,21 @@
             // 
             // ErrorMaxTB
             // 
-            this.ErrorMaxTB.Location = new System.Drawing.Point(509, 35);
+            this.ErrorMaxTB.Location = new System.Drawing.Point(355, 35);
             this.ErrorMaxTB.Name = "ErrorMaxTB";
             this.ErrorMaxTB.Size = new System.Drawing.Size(118, 24);
             this.ErrorMaxTB.TabIndex = 20;
-            this.ErrorMaxTB.Text = "0,00001";
+            this.ErrorMaxTB.Text = "0,0000001";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label10.Location = new System.Drawing.Point(420, 37);
+            this.label10.Location = new System.Drawing.Point(266, 37);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 20);
             this.label10.TabIndex = 19;
             this.label10.Text = "ErrorMax:";
-            // 
-            // EpochsTB
-            // 
-            this.EpochsTB.Location = new System.Drawing.Point(89, 35);
-            this.EpochsTB.Name = "EpochsTB";
-            this.EpochsTB.Size = new System.Drawing.Size(63, 24);
-            this.EpochsTB.TabIndex = 18;
-            this.EpochsTB.Text = "1000";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label9.Location = new System.Drawing.Point(19, 37);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 20);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Epochs:";
             // 
             // TrainButton
             // 
@@ -323,6 +297,47 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Show Graph 2D";
             // 
+            // CorrectionGraphButton
+            // 
+            this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.CorrectionGraphButton.Location = new System.Drawing.Point(385, 93);
+            this.CorrectionGraphButton.Name = "CorrectionGraphButton";
+            this.CorrectionGraphButton.Size = new System.Drawing.Size(320, 98);
+            this.CorrectionGraphButton.TabIndex = 30;
+            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
+            this.CorrectionGraphButton.UseVisualStyleBackColor = true;
+            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.Location = new System.Drawing.Point(266, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Start Point:";
+            // 
+            // StartPointTB
+            // 
+            this.StartPointTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.StartPointTB.Location = new System.Drawing.Point(378, 39);
+            this.StartPointTB.Name = "StartPointTB";
+            this.StartPointTB.Size = new System.Drawing.Size(63, 26);
+            this.StartPointTB.TabIndex = 26;
+            this.StartPointTB.Text = "300";
+            this.StartPointTB.TextChanged += new System.EventHandler(this.StartPointTB_TextChanged);
+            // 
+            // AmountOfPointsToShowTB
+            // 
+            this.AmountOfPointsToShowTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(620, 40);
+            this.AmountOfPointsToShowTB.Name = "AmountOfPointsToShowTB";
+            this.AmountOfPointsToShowTB.Size = new System.Drawing.Size(63, 26);
+            this.AmountOfPointsToShowTB.TabIndex = 29;
+            this.AmountOfPointsToShowTB.Text = "300";
+            this.AmountOfPointsToShowTB.TextChanged += new System.EventHandler(this.AmountOfPointsToShowTB_TextChanged);
+            // 
             // ZRadioButton
             // 
             this.ZRadioButton.AutoSize = true;
@@ -333,6 +348,16 @@
             this.ZRadioButton.TabStop = true;
             this.ZRadioButton.Text = "Z";
             this.ZRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label6.Location = new System.Drawing.Point(463, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 20);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Amount of Points:";
             // 
             // YRadioButton
             // 
@@ -356,54 +381,6 @@
             this.XRadioButton.TabStop = true;
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // StartPointTB
-            // 
-            this.StartPointTB.Location = new System.Drawing.Point(640, 44);
-            this.StartPointTB.Name = "StartPointTB";
-            this.StartPointTB.Size = new System.Drawing.Size(63, 22);
-            this.StartPointTB.TabIndex = 26;
-            this.StartPointTB.Text = "300";
- 
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(534, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 20);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Start Point:";
-            // 
-            // AmountOfPointsToShowTB
-            // 
-            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(424, 43);
-            this.AmountOfPointsToShowTB.Name = "AmountOfPointsToShowTB";
-            this.AmountOfPointsToShowTB.Size = new System.Drawing.Size(63, 22);
-            this.AmountOfPointsToShowTB.TabIndex = 29;
-            this.AmountOfPointsToShowTB.Text = "300";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(267, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 20);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Amount of Points:";
-            // 
-            // CorrectionGraphButton
-            // 
-            this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CorrectionGraphButton.Location = new System.Drawing.Point(385, 93);
-            this.CorrectionGraphButton.Name = "CorrectionGraphButton";
-            this.CorrectionGraphButton.Size = new System.Drawing.Size(320, 98);
-            this.CorrectionGraphButton.TabIndex = 30;
-            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
-            this.CorrectionGraphButton.UseVisualStyleBackColor = true;
-            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
             // 
             // Form1
             // 
@@ -448,8 +425,6 @@
         private System.Windows.Forms.Label YResultLabel;
         private System.Windows.Forms.Label XResultLabel;
         private System.Windows.Forms.Button TrainButton;
-        private System.Windows.Forms.TextBox EpochsTB;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ErrorMaxTB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox AmountOfPointsTB;
