@@ -19,6 +19,7 @@ namespace Runge_Kutta.Services
         {
             this.errorMax = errorMax;
             this.epochs = epochs;
+            //dsafsd
             this.amountOfPoints = amountOfPoints;
 
             ResultForOneNeuron xResult =
