@@ -33,7 +33,7 @@ namespace Runge_Kutta
                     Line = {
                         Width = 2,
                         Color = Color.Red,
-                        Antialiasing = true,
+                        
                         DashStyle = DashStyle.Dotted
                     }
                 },
@@ -41,12 +41,12 @@ namespace Runge_Kutta
                     Line = {
                         Width = 2,
                         Color = Color.Blue,
-                        Antialiasing = true,
+                        
                         DashStyle = DashStyle.Dotted
                     }
                 },
-                new ILLegend(@"Desired Output",
-                             @"Real Output") {
+                new ILLegend(@"Runge Kutta",
+                             @"Perceptron") {
                     // legends are regular scene graph objects. This gives you complete freedom for 
                     // further configuration ...
                     Background = { Color = Color.FromArgb(210,Color.White) }

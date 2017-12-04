@@ -10,43 +10,40 @@ namespace Runge_Kutta.Services
 {
     class PerceptronService
     {
-        private float errorMax = 0.00001f;
-        private int epochs;
-        private int amountOfPoints;
+        
+        
+        
+
+      
 
         public ResultOfTrainingSPL findWeightsAndThreshold(ref float[,] trainDataSet,
              int epochs, float errorMax, int amountOfPoints)
         {
-            this.errorMax = errorMax;
-            this.epochs = epochs;
-            //dsafsd
-            this.amountOfPoints = amountOfPoints;
+            float w1, w2, w3, t1;
+            float w4, w5, w6, t2;
+            float w7, w8, w9, t3;
 
-            ResultForOneNeuron xResult =
-                findForOneNeuron(ref trainDataSet, 0);
-            ResultForOneNeuron yResult =
-                findForOneNeuron(ref trainDataSet, 1);
-            ResultForOneNeuron zResult =
-                findForOneNeuron(ref trainDataSet, 2);
+            float errorS = 0.0f;
+            float sumError = 0.0f;
+            float errorPrev = 0.0f;
 
-            ResultOfTrainingSPL resultGroup =
-                new ResultOfTrainingSPL(xResult, yResult, zResult); 
-
-            return resultGroup;
-        }
-
-        public ResultForOneNeuron findForOneNeuron(ref float[,] trainDataSet, int index)
-        {
-            float w1, w2, w3, t;
 
             Random rnd = new Random();
-            w1 = (float)rnd.NextDouble();
-            w2 = (float)rnd.NextDouble();
-            w3 = (float)rnd.NextDouble();
-            t = (float)rnd.NextDouble();
+            w1 = (float) rnd.NextDouble();
+            w2 = (float) rnd.NextDouble();
+            w3 = (float) rnd.NextDouble();
+            t1 = (float) rnd.NextDouble();
 
-            float newValue = 0.0f;
-            float desireValue = 0.0f;
+            w4 = (float) rnd.NextDouble();
+            w5 = (float) rnd.NextDouble();
+            w6 = (float) rnd.NextDouble();
+            t2 = (float) rnd.NextDouble();
+
+            w7 = (float) rnd.NextDouble();
+            w8 = (float) rnd.NextDouble();
+            w9 = (float) rnd.NextDouble();
+            t3 = (float) rnd.NextDouble();
+
 
             for (int e = 0; e < epochs; e++)
             {
@@ -54,11 +51,15 @@ namespace Runge_Kutta.Services
                 float y;
                 float z;
 
-                
+                float desireValueX, newValueX;
+                float desireValueY, newValueY;
+                float desireValueZ, newValueZ;
 
                 for (int i = 0; i < amountOfPoints; i += 1)
                 {
-                    desireValue = trainDataSet[i + 1, index];
+                    desireValueX = trainDataSet[i + 1, 0];
+                    desireValueY = trainDataSet[i + 1, 1];
+                    desireValueZ = trainDataSet[i + 1, 2];
 
                     x = trainDataSet[i, 0];
                     y = trainDataSet[i, 1];
@@ -66,33 +67,57 @@ namespace Runge_Kutta.Services
 
                     float learningRate = (float) (1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
 
-                    newValue = x * w1 + y * w2 + z * w3 - t;
+                    newValueX = x * w1 + y * w2 + z * w3 - t1;
+                    newValueY = x * w4 + y * w5 + z * w6 - t2;
+                    newValueZ = x * w7 + y * w8 + z * w9 - t3;
 
-                    while (Math.Abs(newValue - desireValue) > errorMax)
-                    {
+                    w1 = w1 - learningRate * x * (newValueX - desireValueX);
+                    w2 = w2 - learningRate * y * (newValueX - desireValueX);
+                    w3 = w3 - learningRate * z * (newValueX - desireValueX);
+                    t1 = t1 + learningRate * (newValueX - desireValueY);
 
-                        w1 = w1 - learningRate * x * (newValue - desireValue);
-                        w2 = w2 - learningRate * y * (newValue - desireValue);
-                        w3 = w3 - learningRate * z * (newValue - desireValue);
-                        t = t + learningRate * (newValue - desireValue);
+                    w4 = w4 - learningRate * x * (newValueY - desireValueY);
+                    w5 = w5 - learningRate * y * (newValueY - desireValueY);
+                    w6 = w6 - learningRate * z * (newValueY - desireValueY);
+                    t2 = t2 + learningRate * (newValueY - desireValueY);
 
-                        newValue = x * w1 + y * w2 + z * w3 - t;
+                    w7 = w7 - learningRate * x * (newValueZ  - desireValueZ);
+                    w8 = w8 - learningRate * y * (newValueZ - desireValueZ);
+                    w9 = w9 - learningRate * z * (newValueZ - desireValueZ);
+                    t3 = t3 + learningRate * (newValueZ - desireValueZ);
 
-                    }
+                    errorS = (float)(Math.Pow(newValueX - desireValueX, 2) +
+                        Math.Pow(newValueY - desireValueY, 2) +
+                        Math.Pow(newValueZ - desireValueZ, 2));
 
+                    sumError += errorS;
+
+                    
                 }
+
+                Debug.WriteLine("Różnica między błędami: " + (errorPrev - errorS) + "dla epoki: " + e);
+                errorPrev = errorS;
+
+                Debug.WriteLine("");
                 
-                Debug.WriteLine("\n");
-                Debug.WriteLine("Epoch ended: {0} for index {1}", e, index);
-                Debug.WriteLine("w1: {0}, w2: {1}, w3: {2}, t: {3}", w1, w2, w3, t);
+                
 
             }
 
-            ResultForOneNeuron result
-                = new ResultForOneNeuron(w1, w2, w3, t);
+            Debug.WriteLine(sumError / 2);
 
+            ResultForOneNeuron result1
+                = new ResultForOneNeuron(w1, w2, w3, t1);
 
-            return result;
+            ResultForOneNeuron result2
+                = new ResultForOneNeuron(w4, w5, w6, t2);
+
+            ResultForOneNeuron result3
+                = new ResultForOneNeuron(w7, w8, w9, t3);
+
+            ResultOfTrainingSPL resultAll = new ResultOfTrainingSPL(result1, result2, result3);
+
+            return resultAll;
         }
 
 

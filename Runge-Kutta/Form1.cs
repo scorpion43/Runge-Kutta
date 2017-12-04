@@ -194,7 +194,7 @@ namespace Runge_Kutta
 
             for (int i = start, index = 0; i < start + amount; i++, index++)
             {
-                ///Debug.WriteLine(i);
+                Debug.WriteLine(source[i, columnNr]);
                 destination[index] = source[i, columnNr];
             }
 
