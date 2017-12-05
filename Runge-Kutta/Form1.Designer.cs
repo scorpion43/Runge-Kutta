@@ -52,14 +52,14 @@
             this.XResultLabel = new System.Windows.Forms.Label();
             this.ShowSecondGraphButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CorrectionGraphButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.StartPointTB = new System.Windows.Forms.TextBox();
+            this.AmountOfPointsToShowTB = new System.Windows.Forms.TextBox();
             this.ZRadioButton = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.YRadioButton = new System.Windows.Forms.RadioButton();
             this.XRadioButton = new System.Windows.Forms.RadioButton();
-            this.StartPointTB = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AmountOfPointsToShowTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CorrectionGraphButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -103,7 +103,7 @@
             this.HTextBox.Name = "HTextBox";
             this.HTextBox.Size = new System.Drawing.Size(63, 24);
             this.HTextBox.TabIndex = 7;
-            this.HTextBox.Text = "0,1";
+            this.HTextBox.Text = "0,08";
             // 
             // label4
             // 
@@ -131,7 +131,7 @@
             this.ZTextBox.Name = "ZTextBox";
             this.ZTextBox.Size = new System.Drawing.Size(63, 24);
             this.ZTextBox.TabIndex = 5;
-            this.ZTextBox.Text = "1";
+            this.ZTextBox.Text = "0,1";
             this.ZTextBox.TextChanged += new System.EventHandler(this.ZTextBox_TextChanged);
             // 
             // label3
@@ -149,7 +149,7 @@
             this.YTextBox.Name = "YTextBox";
             this.YTextBox.Size = new System.Drawing.Size(63, 24);
             this.YTextBox.TabIndex = 3;
-            this.YTextBox.Text = "1";
+            this.YTextBox.Text = "0,1";
             // 
             // label2
             // 
@@ -166,7 +166,7 @@
             this.XTextBox.Name = "XTextBox";
             this.XTextBox.Size = new System.Drawing.Size(63, 24);
             this.XTextBox.TabIndex = 1;
-            this.XTextBox.Text = "1";
+            this.XTextBox.Text = "0,1";
             // 
             // label1
             // 
@@ -323,6 +323,44 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Show Graph 2D";
             // 
+            // CorrectionGraphButton
+            // 
+            this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.CorrectionGraphButton.Location = new System.Drawing.Point(385, 93);
+            this.CorrectionGraphButton.Name = "CorrectionGraphButton";
+            this.CorrectionGraphButton.Size = new System.Drawing.Size(320, 98);
+            this.CorrectionGraphButton.TabIndex = 30;
+            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
+            this.CorrectionGraphButton.UseVisualStyleBackColor = true;
+            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label5.Location = new System.Drawing.Point(534, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Start Point:";
+            // 
+            // StartPointTB
+            // 
+            this.StartPointTB.Location = new System.Drawing.Point(640, 44);
+            this.StartPointTB.Name = "StartPointTB";
+            this.StartPointTB.Size = new System.Drawing.Size(63, 22);
+            this.StartPointTB.TabIndex = 26;
+            this.StartPointTB.Text = "1";
+            this.StartPointTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // AmountOfPointsToShowTB
+            // 
+            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(424, 43);
+            this.AmountOfPointsToShowTB.Name = "AmountOfPointsToShowTB";
+            this.AmountOfPointsToShowTB.Size = new System.Drawing.Size(63, 22);
+            this.AmountOfPointsToShowTB.TabIndex = 29;
+            this.AmountOfPointsToShowTB.Text = "1499";
+            // 
             // ZRadioButton
             // 
             this.ZRadioButton.AutoSize = true;
@@ -333,6 +371,16 @@
             this.ZRadioButton.TabStop = true;
             this.ZRadioButton.Text = "Z";
             this.ZRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label6.Location = new System.Drawing.Point(267, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 20);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Amount of Points:";
             // 
             // YRadioButton
             // 
@@ -356,54 +404,6 @@
             this.XRadioButton.TabStop = true;
             this.XRadioButton.Text = "X";
             this.XRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // StartPointTB
-            // 
-            this.StartPointTB.Location = new System.Drawing.Point(640, 44);
-            this.StartPointTB.Name = "StartPointTB";
-            this.StartPointTB.Size = new System.Drawing.Size(63, 22);
-            this.StartPointTB.TabIndex = 26;
-            this.StartPointTB.Text = "300";
-            this.StartPointTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(534, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 20);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Start Point:";
-            // 
-            // AmountOfPointsToShowTB
-            // 
-            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(424, 43);
-            this.AmountOfPointsToShowTB.Name = "AmountOfPointsToShowTB";
-            this.AmountOfPointsToShowTB.Size = new System.Drawing.Size(63, 22);
-            this.AmountOfPointsToShowTB.TabIndex = 29;
-            this.AmountOfPointsToShowTB.Text = "300";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(267, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 20);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Amount of Points:";
-            // 
-            // CorrectionGraphButton
-            // 
-            this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CorrectionGraphButton.Location = new System.Drawing.Point(385, 93);
-            this.CorrectionGraphButton.Name = "CorrectionGraphButton";
-            this.CorrectionGraphButton.Size = new System.Drawing.Size(320, 98);
-            this.CorrectionGraphButton.TabIndex = 30;
-            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
-            this.CorrectionGraphButton.UseVisualStyleBackColor = true;
-            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
             // 
             // Form1
             // 
