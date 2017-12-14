@@ -12,7 +12,8 @@ namespace Runge_Kutta
 {
     public partial class Plotting_Form2 : Form
     {
-        public static float[] POINTS_2D;
+        public static ILArray<float> POINTS_2D;
+         
 
         public Plotting_Form2()
         {
@@ -24,11 +25,11 @@ namespace Runge_Kutta
         {
 
             // create some test data, using our private computation module as inner class
-            ILArray<float> Pos = POINTS_2D;
+            
 
             // setup the plot (modify as needed)
             ilPanel1.Scene.Add(new ILPlotCube(twoDMode: false) {
-                new ILLinePlot(Pos, tag: "mylineplot") {
+                new ILLinePlot(POINTS_2D, tag: "mylineplot") {
                     Line = {
                         Width = 2,
                         Color = Color.Red,

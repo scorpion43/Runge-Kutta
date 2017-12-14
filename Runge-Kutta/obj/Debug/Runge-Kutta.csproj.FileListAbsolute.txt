@@ -10,7 +10,6 @@ D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\bin\Debug\ILNumerics.Core.xm
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\bin\Debug\ILNumerics.Drawing.xml
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.csprojResolveAssemblyReference.cache
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Form1.resources
-D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Plotting_Form1.resources
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge_Kutta.Properties.Resources.resources
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\obj\Debug\Runge-Kutta.csproj.GenerateResource.Cache
 D:\Programowanie\IT Project\Runge-Kutta\Runge-Kutta\bin\Debug\Runge-Kutta.pdb

@@ -32,7 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.HTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ShowFirstGraphButton = new System.Windows.Forms.Button();
             this.ZTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.YTextBox = new System.Windows.Forms.TextBox();
@@ -48,8 +47,12 @@
             this.ZResultLabel = new System.Windows.Forms.Label();
             this.YResultLabel = new System.Windows.Forms.Label();
             this.XResultLabel = new System.Windows.Forms.Label();
-            this.ShowSecondGraphButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TB3D = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.RungeKuttaRB = new System.Windows.Forms.RadioButton();
+            this.BothRB = new System.Windows.Forms.RadioButton();
+            this.PerceptronRB = new System.Windows.Forms.RadioButton();
             this.CorrectionGraphButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.StartPointTB = new System.Windows.Forms.TextBox();
@@ -61,6 +64,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -68,9 +72,9 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button1.Location = new System.Drawing.Point(16, 81);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(333, 72);
+            this.button1.Size = new System.Drawing.Size(698, 72);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Generate Points for Graph x(t), y(t), z(t)";
+            this.button1.Text = "Generate Points";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -78,7 +82,6 @@
             // 
             this.groupBox1.Controls.Add(this.HTextBox);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.ShowFirstGraphButton);
             this.groupBox1.Controls.Add(this.ZTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.YTextBox);
@@ -110,17 +113,6 @@
             this.label4.Size = new System.Drawing.Size(16, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "h";
-            // 
-            // ShowFirstGraphButton
-            // 
-            this.ShowFirstGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ShowFirstGraphButton.Location = new System.Drawing.Point(367, 81);
-            this.ShowFirstGraphButton.Name = "ShowFirstGraphButton";
-            this.ShowFirstGraphButton.Size = new System.Drawing.Size(336, 72);
-            this.ShowFirstGraphButton.TabIndex = 2;
-            this.ShowFirstGraphButton.Text = "Show Graph for x(t), y(t), z(t)";
-            this.ShowFirstGraphButton.UseVisualStyleBackColor = true;
-            this.ShowFirstGraphButton.Click += new System.EventHandler(this.ShowFirstGraphButton_Click);
             // 
             // ZTextBox
             // 
@@ -268,19 +260,10 @@
             this.XResultLabel.TabIndex = 7;
             this.XResultLabel.Text = "For X(t):";
             // 
-            // ShowSecondGraphButton
-            // 
-            this.ShowSecondGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ShowSecondGraphButton.Location = new System.Drawing.Point(23, 93);
-            this.ShowSecondGraphButton.Name = "ShowSecondGraphButton";
-            this.ShowSecondGraphButton.Size = new System.Drawing.Size(317, 98);
-            this.ShowSecondGraphButton.TabIndex = 5;
-            this.ShowSecondGraphButton.Text = "Show Graph for choosen one";
-            this.ShowSecondGraphButton.UseVisualStyleBackColor = true;
-            this.ShowSecondGraphButton.Click += new System.EventHandler(this.ShowSecondGraphButton_Click);
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.TB3D);
+            this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.CorrectionGraphButton);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.StartPointTB);
@@ -289,22 +272,76 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.YRadioButton);
             this.groupBox3.Controls.Add(this.XRadioButton);
-            this.groupBox3.Controls.Add(this.ShowSecondGraphButton);
             this.groupBox3.Location = new System.Drawing.Point(12, 442);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(727, 217);
+            this.groupBox3.Size = new System.Drawing.Size(727, 284);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Show Graph 2D";
+            this.groupBox3.Text = "Results representation";
+            // 
+            // TB3D
+            // 
+            this.TB3D.AutoSize = true;
+            this.TB3D.Location = new System.Drawing.Point(223, 135);
+            this.TB3D.Name = "TB3D";
+            this.TB3D.Size = new System.Drawing.Size(47, 21);
+            this.TB3D.TabIndex = 35;
+            this.TB3D.TabStop = true;
+            this.TB3D.Text = "3D";
+            this.TB3D.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.RungeKuttaRB);
+            this.groupBox4.Controls.Add(this.BothRB);
+            this.groupBox4.Controls.Add(this.PerceptronRB);
+            this.groupBox4.Location = new System.Drawing.Point(16, 30);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(687, 74);
+            this.groupBox4.TabIndex = 34;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Source";
+            // 
+            // RungeKuttaRB
+            // 
+            this.RungeKuttaRB.AutoSize = true;
+            this.RungeKuttaRB.Checked = true;
+            this.RungeKuttaRB.Location = new System.Drawing.Point(106, 31);
+            this.RungeKuttaRB.Name = "RungeKuttaRB";
+            this.RungeKuttaRB.Size = new System.Drawing.Size(108, 21);
+            this.RungeKuttaRB.TabIndex = 31;
+            this.RungeKuttaRB.TabStop = true;
+            this.RungeKuttaRB.Text = "Runge Kutta";
+            this.RungeKuttaRB.UseVisualStyleBackColor = true;
+            // 
+            // BothRB
+            // 
+            this.BothRB.AutoSize = true;
+            this.BothRB.Location = new System.Drawing.Point(521, 31);
+            this.BothRB.Name = "BothRB";
+            this.BothRB.Size = new System.Drawing.Size(58, 21);
+            this.BothRB.TabIndex = 33;
+            this.BothRB.Text = "Both";
+            this.BothRB.UseVisualStyleBackColor = true;
+            // 
+            // PerceptronRB
+            // 
+            this.PerceptronRB.AutoSize = true;
+            this.PerceptronRB.Location = new System.Drawing.Point(317, 31);
+            this.PerceptronRB.Name = "PerceptronRB";
+            this.PerceptronRB.Size = new System.Drawing.Size(99, 21);
+            this.PerceptronRB.TabIndex = 32;
+            this.PerceptronRB.Text = "Perceptron";
+            this.PerceptronRB.UseVisualStyleBackColor = true;
             // 
             // CorrectionGraphButton
             // 
             this.CorrectionGraphButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.CorrectionGraphButton.Location = new System.Drawing.Point(385, 93);
+            this.CorrectionGraphButton.Location = new System.Drawing.Point(23, 180);
             this.CorrectionGraphButton.Name = "CorrectionGraphButton";
-            this.CorrectionGraphButton.Size = new System.Drawing.Size(320, 98);
+            this.CorrectionGraphButton.Size = new System.Drawing.Size(691, 98);
             this.CorrectionGraphButton.TabIndex = 30;
-            this.CorrectionGraphButton.Text = "Show Correction Graph for choosen one";
+            this.CorrectionGraphButton.Text = "Show Graph";
             this.CorrectionGraphButton.UseVisualStyleBackColor = true;
             this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
             // 
@@ -312,7 +349,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(266, 43);
+            this.label5.Location = new System.Drawing.Point(282, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 20);
             this.label5.TabIndex = 27;
@@ -321,27 +358,25 @@
             // StartPointTB
             // 
             this.StartPointTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.StartPointTB.Location = new System.Drawing.Point(378, 39);
+            this.StartPointTB.Location = new System.Drawing.Point(394, 130);
             this.StartPointTB.Name = "StartPointTB";
             this.StartPointTB.Size = new System.Drawing.Size(63, 26);
             this.StartPointTB.TabIndex = 26;
             this.StartPointTB.Text = "300";
-            this.StartPointTB.TextChanged += new System.EventHandler(this.StartPointTB_TextChanged);
             // 
             // AmountOfPointsToShowTB
             // 
             this.AmountOfPointsToShowTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(620, 40);
+            this.AmountOfPointsToShowTB.Location = new System.Drawing.Point(636, 131);
             this.AmountOfPointsToShowTB.Name = "AmountOfPointsToShowTB";
             this.AmountOfPointsToShowTB.Size = new System.Drawing.Size(63, 26);
             this.AmountOfPointsToShowTB.TabIndex = 29;
             this.AmountOfPointsToShowTB.Text = "300";
-            this.AmountOfPointsToShowTB.TextChanged += new System.EventHandler(this.AmountOfPointsToShowTB_TextChanged);
             // 
             // ZRadioButton
             // 
             this.ZRadioButton.AutoSize = true;
-            this.ZRadioButton.Location = new System.Drawing.Point(183, 43);
+            this.ZRadioButton.Location = new System.Drawing.Point(167, 135);
             this.ZRadioButton.Name = "ZRadioButton";
             this.ZRadioButton.Size = new System.Drawing.Size(38, 21);
             this.ZRadioButton.TabIndex = 8;
@@ -353,7 +388,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label6.Location = new System.Drawing.Point(463, 43);
+            this.label6.Location = new System.Drawing.Point(479, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(142, 20);
             this.label6.TabIndex = 28;
@@ -362,7 +397,7 @@
             // YRadioButton
             // 
             this.YRadioButton.AutoSize = true;
-            this.YRadioButton.Location = new System.Drawing.Point(102, 43);
+            this.YRadioButton.Location = new System.Drawing.Point(99, 135);
             this.YRadioButton.Name = "YRadioButton";
             this.YRadioButton.Size = new System.Drawing.Size(38, 21);
             this.YRadioButton.TabIndex = 7;
@@ -374,7 +409,7 @@
             // 
             this.XRadioButton.AutoSize = true;
             this.XRadioButton.Checked = true;
-            this.XRadioButton.Location = new System.Drawing.Point(23, 44);
+            this.XRadioButton.Location = new System.Drawing.Point(39, 135);
             this.XRadioButton.Name = "XRadioButton";
             this.XRadioButton.Size = new System.Drawing.Size(38, 21);
             this.XRadioButton.TabIndex = 6;
@@ -386,7 +421,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 671);
+            this.ClientSize = new System.Drawing.Size(753, 738);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -398,6 +433,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -414,9 +451,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox XTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button ShowFirstGraphButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button ShowSecondGraphButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton ZRadioButton;
         private System.Windows.Forms.RadioButton YRadioButton;
@@ -434,6 +469,11 @@
         private System.Windows.Forms.TextBox AmountOfPointsToShowTB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button CorrectionGraphButton;
+        private System.Windows.Forms.RadioButton BothRB;
+        private System.Windows.Forms.RadioButton PerceptronRB;
+        private System.Windows.Forms.RadioButton RungeKuttaRB;
+        private System.Windows.Forms.RadioButton TB3D;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 

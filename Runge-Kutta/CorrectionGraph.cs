@@ -12,8 +12,8 @@ namespace Runge_Kutta
 {
     public partial class CorrectionGraph : Form
     {
-        public static float[] realOutput;
-        public static float[] desiredOutput;
+        public static ILArray<float> realOutput;
+        public static ILArray<float> desiredOutput;
 
         public CorrectionGraph()
         {
@@ -37,26 +37,26 @@ namespace Runge_Kutta
                         Width = 2,
                         Color = Color.Green,
                         DashStyle = DashStyle.Dotted
-                    },
+                    }/*,
                     Marker =
                     {
                         Size = 4,
                         Style = MarkerStyle.Rectangle,
                         ColorOverride = color1
-                    }
+                    }*/
                 },
                 new ILLinePlot(realOutput, tag: "mylineplot") {
                     Line = {
                         Width = 2,
                         Color = color2,
                         DashStyle = DashStyle.Dotted
-                    },
+                    }/*,
                     Marker =
                     {
                         Size = 4,
                         Style = MarkerStyle.Rectangle,
                         ColorOverride = color2
-                    }
+                    }*/
                 },
                 new ILLegend(@"Runge Kutta",
                              @"Perceptron") {

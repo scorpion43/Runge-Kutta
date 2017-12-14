@@ -63,12 +63,6 @@
     <Compile Include="ILNumerics_deploy\ILNHelper.cs" />
     <Compile Include="Models\ResultForOneNeuron.cs" />
     <Compile Include="Models\ResultOfTrainingSPL.cs" />
-    <Compile Include="Plotting Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Plotting Form1.Designer.cs">
-      <DependentUpon>Plotting Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Plotting Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,9 +80,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILNumerics_deploy\ilnumerics.lic" />
-    <EmbeddedResource Include="Plotting Form1.resx">
-      <DependentUpon>Plotting Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Plotting Form2.resx">
       <DependentUpon>Plotting Form2.cs</DependentUpon>
     </EmbeddedResource>
