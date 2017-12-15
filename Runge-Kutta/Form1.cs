@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,6 +24,7 @@ namespace Runge_Kutta
 
         private RungeKuttaService rungeKuttaService = new RungeKuttaService();
         private PerceptronService pService = new PerceptronService();
+        private ValidationService validationService = new ValidationService();
         private ResultOfTrainingSPL resultSPL;
 
         private float learningRate = 0.1f;
@@ -37,17 +39,50 @@ namespace Runge_Kutta
             InitializeComponent();
         }
 
+        //runge kutta generation
         private void button1_Click(object sender, EventArgs e)
         {
-            points = rungeKuttaService.GeneratePointsByRungeKutta4k()
+            ValidationResult vResult = validationService.checkAllFieldValuesToGeneratePoints(
+                 XTextBox.Text, YTextBox.Text, ZTextBox.Text, HTextBox.Text);
+
+            if (!vResult.Success)
+            {
+                MessageBox.Show(vResult.ValidationError);
+                return;
+            }
+
+
+            h = float.Parse(HTextBox.Text);
+            x0 = float.Parse(XTextBox.Text);
+            y0 = float.Parse(YTextBox.Text);
+            z0 = float.Parse(ZTextBox.Text);
+
+            points = rungeKuttaService.GeneratePointsByRungeKutta4k(x0, y0, z0, h);
+            MessageBox.Show("Generating points complete.");
         }
 
 
         private void TrainButton_Click(object sender, EventArgs e)
         {
-            
+
+            ValidationResult vResult = new ValidationResult();
+            vResult = validationService.checkFieldsToTrain(AmountOfPointsTB.Text, ErrorMaxTB.Text);
+
+            if (!vResult.Success)
+            {
+                MessageBox.Show(vResult.ValidationError);
+                return;
+            }
+
             float errorMax = float.Parse(ErrorMaxTB.Text);
             int amountOfPoints = Int32.Parse(AmountOfPointsTB.Text);
+
+            if (amountOfPoints < 1 || amountOfPoints >= 1500)
+            {
+                MessageBox.Show("Amount of points value is uncorrect");
+                return;
+            }
+
             resultSPL = pService.findWeightsAndThreshold(ref points, errorMax, amountOfPoints);
 
             Debug.WriteLine("Learning Rate: " + learningRate);
@@ -67,8 +102,17 @@ namespace Runge_Kutta
                 + ", t3: " + resultSPL.zResult.t;
         }
 
-        private void CorrectionGraphButton_Click(object sender, EventArgs e)
+        private void RepresentationGraphButton_Click(object sender, EventArgs e)
         {
+            ValidationResult vResult = new ValidationResult();
+            vResult = validationService.checkFieldsToRepresent(AmountOfPointsToShowTB.Text, StartPointTB.Text);
+
+            if (!vResult.Success)
+            {
+                MessageBox.Show(vResult.ValidationError);
+                return;
+            }
+
             showProperGraph();
         }
 
@@ -134,9 +178,22 @@ namespace Runge_Kutta
 
         private void showPerceptronGraph()
         {
+
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
             String title = "";
+
+            if (startPoint < 1)
+            {
+                MessageBox.Show("Start point for Perceptron Representation should start from 1 or greater value");
+                return;
+            }
+
+            if (startPoint + amount > 1500)
+            {
+                MessageBox.Show("Out of renge. Change the start point or amount.");
+                return;
+            }
 
             if (XRadioButton.Checked)
             {
@@ -170,7 +227,19 @@ namespace Runge_Kutta
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
             String title = "";
-                
+
+            if (startPoint < 1)
+            {
+                MessageBox.Show("Start point for Correction Representation should start from 1 or greater value");
+                return;
+            }
+
+            if (startPoint + amount > 1500)
+            {
+                MessageBox.Show("Out of renge. Change the start point or amount.");
+                return;
+            }
+
             if (XRadioButton.Checked) {
                 title = "Correction Graph for X";
                 CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);

@@ -343,7 +343,7 @@
             this.CorrectionGraphButton.TabIndex = 30;
             this.CorrectionGraphButton.Text = "Show Graph";
             this.CorrectionGraphButton.UseVisualStyleBackColor = true;
-            this.CorrectionGraphButton.Click += new System.EventHandler(this.CorrectionGraphButton_Click);
+            this.CorrectionGraphButton.Click += new System.EventHandler(this.RepresentationGraphButton_Click);
             // 
             // label5
             // 
