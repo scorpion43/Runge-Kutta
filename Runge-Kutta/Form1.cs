@@ -25,6 +25,7 @@ namespace Runge_Kutta
         private RungeKuttaService rungeKuttaService = new RungeKuttaService();
         private PerceptronService pService = new PerceptronService();
         private ValidationService validationService = new ValidationService();
+        private ValidationRangesService vRService = new ValidationRangesService();
         private ResultOfTrainingSPL resultSPL;
 
         private float learningRate = 0.1f;
@@ -77,9 +78,11 @@ namespace Runge_Kutta
             float errorMax = float.Parse(ErrorMaxTB.Text);
             int amountOfPoints = Int32.Parse(AmountOfPointsTB.Text);
 
-            if (amountOfPoints < 1 || amountOfPoints >= 1500)
+            vResult = vRService.checkRangesForFieldsToTest(amountOfPoints);
+
+            if (!vResult.Success)
             {
-                MessageBox.Show("Amount of points value is uncorrect");
+                MessageBox.Show(vResult.ValidationError);
                 return;
             }
 
@@ -113,7 +116,40 @@ namespace Runge_Kutta
                 return;
             }
 
-            showProperGraph();
+            int startPoint = Int32.Parse(StartPointTB.Text);
+            int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
+
+            vResult = validateBeforeDisplayRepresentation(startPoint, amount);
+
+            if (vResult.Success)
+            {
+                showProperGraph();
+            }
+            else
+            {
+                MessageBox.Show(vResult.ValidationError);
+            }
+            
+        }
+
+        private ValidationResult validateBeforeDisplayRepresentation(int startPoint, int amount)
+        {
+            ValidationResult vResult = new ValidationResult();
+
+            if (RungeKuttaRB.Checked)
+            {
+                vResult = vRService.checkRangesForRungeKuttaRepresentation(startPoint, amount);
+            }
+            else if (PerceptronRB.Checked)
+            {
+                vResult = vRService.checkRangesForPerceptronRepresentation(startPoint, amount);
+            }
+            else if (BothRB.Checked)
+            {
+                vResult = vRService.checkRangesForPerceptronRepresentation(startPoint, amount);
+            }
+
+            return vResult;
         }
 
         private void showProperGraph()
@@ -137,17 +173,6 @@ namespace Runge_Kutta
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
             String title = "";
-
-            if (startPoint < 0) {
-                MessageBox.Show("Start point for Runge Kutta Representation should start from 0 or greater value");
-                return;
-            }
-
-            if (startPoint + amount > 1500)
-            {
-                MessageBox.Show("Out of renge. Change the start point or amount.");
-                return;
-            }
 
             if (XRadioButton.Checked)
             {
@@ -178,22 +203,9 @@ namespace Runge_Kutta
 
         private void showPerceptronGraph()
         {
-
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
             String title = "";
-
-            if (startPoint < 1)
-            {
-                MessageBox.Show("Start point for Perceptron Representation should start from 1 or greater value");
-                return;
-            }
-
-            if (startPoint + amount > 1500)
-            {
-                MessageBox.Show("Out of renge. Change the start point or amount.");
-                return;
-            }
 
             if (XRadioButton.Checked)
             {
@@ -227,18 +239,6 @@ namespace Runge_Kutta
             int startPoint = Int32.Parse(StartPointTB.Text);
             int amount = Int32.Parse(AmountOfPointsToShowTB.Text);
             String title = "";
-
-            if (startPoint < 1)
-            {
-                MessageBox.Show("Start point for Correction Representation should start from 1 or greater value");
-                return;
-            }
-
-            if (startPoint + amount > 1500)
-            {
-                MessageBox.Show("Out of renge. Change the start point or amount.");
-                return;
-            }
 
             if (XRadioButton.Checked) {
                 title = "Correction Graph for X";
