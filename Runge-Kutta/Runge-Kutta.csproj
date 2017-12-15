@@ -73,6 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PerceptronService.cs" />
+    <Compile Include="Services\PointsManipulationService.cs" />
     <Compile Include="Services\RungeKuttaService.cs" />
     <Compile Include="Services\ValidationRangesService.cs" />
     <Compile Include="Services\ValidationService.cs" />

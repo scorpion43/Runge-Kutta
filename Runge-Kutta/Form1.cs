@@ -27,6 +27,7 @@ namespace Runge_Kutta
         private ValidationService validationService = new ValidationService();
         private ValidationRangesService vRService = new ValidationRangesService();
         private ResultOfTrainingSPL resultSPL;
+        private PointsManipulationService pointsManipulationService = new PointsManipulationService();
 
         private float learningRate = 0.1f;
 
@@ -177,23 +178,27 @@ namespace Runge_Kutta
             if (XRadioButton.Checked)
             {
                 title = "Runge Kutta for X";
-                Plotting_Form2.POINTS_2D = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
             }
             else if (YRadioButton.Checked)
             {
                 title = "Runge Kutta for Y";
-                Plotting_Form2.POINTS_2D = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
             }
             else if (ZRadioButton.Checked)
             {
                 title = "Runge Kutta for Z";
-                Plotting_Form2.POINTS_2D = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
+                Plotting_Form2.POINTS_2D = 
+                   pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
             }
             else if (TB3D.Checked)
             {
                 title = "Runge Kutta in 3D";
                 Debug.WriteLine("Length of points: " + points.Length);
-                Plotting_Form2.POINTS_2D = prepareRungeKuttaFor3D(startPoint, amount);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.prepareRungeKuttaFor3D(startPoint, amount, ref points);
             }
 
             Plotting_Form2 plotingForm = new Plotting_Form2();
@@ -210,22 +215,26 @@ namespace Runge_Kutta
             if (XRadioButton.Checked)
             {
                 title = "Perceptron Graph for X";
-                Plotting_Form2.POINTS_2D = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult, ref points);
             }
             else if (YRadioButton.Checked)
             {
                 title = "Perceptron Graph for Y";
-                Plotting_Form2.POINTS_2D = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult, ref points);
             }
             else if (ZRadioButton.Checked)
             {
                 title = "Perceptron Graph for Z";
-                Plotting_Form2.POINTS_2D = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult, ref points);
             }
             else if (TB3D.Checked)
             {
                 title = "Perceptron in 3D";
-                Plotting_Form2.POINTS_2D = prepare3DForPerceptron(startPoint, amount);
+                Plotting_Form2.POINTS_2D = 
+                    pointsManipulationService.prepare3DForPerceptron(startPoint, amount, resultSPL, ref points);
             }
 
             Plotting_Form2 plotingForm = new Plotting_Form2();
@@ -242,27 +251,35 @@ namespace Runge_Kutta
 
             if (XRadioButton.Checked) {
                 title = "Correction Graph for X";
-                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
-                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
+                CorrectionGraph.realOutput = 
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult, ref points);
+                CorrectionGraph.desiredOutput = 
+                    pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
             }
             else if (YRadioButton.Checked)
             {
                 title = "Correction Graph for Y";
-                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
-                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
+                CorrectionGraph.realOutput =
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult, ref points);
+                CorrectionGraph.desiredOutput = 
+                    pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
             }
             else if (ZRadioButton.Checked)
             {
                 title = "Correction Graph for Z";
-                CorrectionGraph.realOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
-                CorrectionGraph.desiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
+                CorrectionGraph.realOutput =
+                    pointsManipulationService.getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult, ref points);
+                CorrectionGraph.desiredOutput =
+                    pointsManipulationService.getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
             }
             else if (TB3D.Checked)
             {
                 title = "Correction Graph for 3D";
-                CorrectionGraph.desiredOutput = prepareRungeKuttaFor3D(startPoint, amount);
+                CorrectionGraph.desiredOutput =
+                    pointsManipulationService.prepareRungeKuttaFor3D(startPoint, amount, ref points);
 
-                float[,] realOutput = prepare3DForPerceptron(startPoint, amount);
+                float[,] realOutput =
+                    pointsManipulationService.prepare3DForPerceptron(startPoint, amount, resultSPL, ref points);
                 CorrectionGraph.realOutput = realOutput;
             }
 
@@ -270,77 +287,6 @@ namespace Runge_Kutta
             cGraph.Text = title;
             cGraph.Show();
         }
-         
-        private float[,] prepare3DForPerceptron( int startPoint, int amount )
-        {
-            float[,] realOutput = new float[amount, 3];
-
-            float[] xRealOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.xResult);
-            float[] yRealOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.yResult);
-            float[] zRealOutput = getRealOtputForCorrectionGraph(startPoint, amount, resultSPL.zResult);
-
-            copyColumn1DArrayTo2DArray(ref xRealOutput, ref realOutput,  0);
-            copyColumn1DArrayTo2DArray(ref yRealOutput, ref realOutput,  1);
-            copyColumn1DArrayTo2DArray(ref zRealOutput, ref realOutput,  2);
-
-            return realOutput;
-        }
-
-        private float[,] prepareRungeKuttaFor3D(int startPoint, int amount)
-        {
-            float[,] desiredOutput = new float[amount, 3];
-
-            float[] xDesiredOutput = getDesiredOutputForCorrectionGraph(ref points, 0, startPoint, amount);
-            float[] yDesiredOutput = getDesiredOutputForCorrectionGraph(ref points, 1, startPoint, amount);
-            float[] zDesiredOutput = getDesiredOutputForCorrectionGraph(ref points, 2, startPoint, amount);
-
-            copyColumn1DArrayTo2DArray(ref xDesiredOutput, ref desiredOutput, 0);
-            copyColumn1DArrayTo2DArray(ref yDesiredOutput, ref desiredOutput, 1);
-            copyColumn1DArrayTo2DArray(ref zDesiredOutput, ref desiredOutput, 2);
-
-            return desiredOutput;
-        }
        
-        private float[] getDesiredOutputForCorrectionGraph(ref float[,] source, int columnNr, int start, int amount)
-        {
-            float[] destination = new float[amount];
-
-
-            for (int i = start, index = 0; index < amount; i++, index++)
-            {
-                destination[index] = source[i, columnNr];
-            }
-
-            return destination;
-        }
-
-        private float[] getRealOtputForCorrectionGraph(int start,
-            int amount, ResultForOneNeuron dataToCount)
-        {
-            float[] destination = new float[amount];
-
-            for (int i = start - 1, index = 0; i < (start + amount - 1); i++, index++)
-            {
-            
-                destination[index] = points[i, 0] * dataToCount.w1 +
-                    points[i, 1] * dataToCount.w2 +
-                    points[i, 2] * dataToCount.w3 -
-                    dataToCount.t;
-            }
-
-            return destination;
-        }
-
-        private void copyColumn1DArrayTo2DArray(ref float[] source, ref float[,] dest, int columnNr)
-        {
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                dest[i, columnNr] = source[i];
-            }
-
-        }
-
-        
     }
 }
