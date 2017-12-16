@@ -103,7 +103,7 @@
             this.HTextBox.Name = "HTextBox";
             this.HTextBox.Size = new System.Drawing.Size(63, 24);
             this.HTextBox.TabIndex = 7;
-            this.HTextBox.Text = "0,1";
+            this.HTextBox.Text = "0,01";
             // 
             // label4
             // 
@@ -120,7 +120,7 @@
             this.ZTextBox.Name = "ZTextBox";
             this.ZTextBox.Size = new System.Drawing.Size(63, 24);
             this.ZTextBox.TabIndex = 5;
-            this.ZTextBox.Text = "1";
+            this.ZTextBox.Text = "0,01";
             // 
             // label3
             // 
@@ -137,7 +137,7 @@
             this.YTextBox.Name = "YTextBox";
             this.YTextBox.Size = new System.Drawing.Size(63, 24);
             this.YTextBox.TabIndex = 3;
-            this.YTextBox.Text = "1";
+            this.YTextBox.Text = "0,01";
             // 
             // label2
             // 
@@ -154,7 +154,7 @@
             this.XTextBox.Name = "XTextBox";
             this.XTextBox.Size = new System.Drawing.Size(63, 24);
             this.XTextBox.TabIndex = 1;
-            this.XTextBox.Text = "1";
+            this.XTextBox.Text = "0,01";
             // 
             // label1
             // 

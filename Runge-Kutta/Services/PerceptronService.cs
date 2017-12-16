@@ -42,9 +42,12 @@ namespace Runge_Kutta.Services
             //Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
 
             float sub;
+            int epochs = 1;
 
             do
             {
+                
+
                 float x;
                 float y;
                 float z;
@@ -63,7 +66,8 @@ namespace Runge_Kutta.Services
                     y = trainDataSet[i, 1];
                     z = trainDataSet[i, 2];
 
-                    float learningRate = (float)(1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
+                    //float learningRate = (float)(1.00 / (1.00 + Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
+                    float learningRate = 0.01f;
 
                     newValueX = x * w1 + y * w2 + z * w3 - t1;
                     newValueY = x * w4 + y * w5 + z * w6 - t2;
@@ -90,11 +94,15 @@ namespace Runge_Kutta.Services
 
                     sumError += errorS;
 
-
+                    
                 }
+
+                Debug.WriteLine("Epochs: " + epochs);
+                epochs++;
 
                 //Debug.WriteLine("Wagi dla x: {0}, {1}, {2}", w1, w2, w3);
 
+                Debug.WriteLine("SubError: ");
                 Debug.WriteLine((sumError / 2) - (sumErrorPrev / 2));
 
                 sub = Math.Abs((sumError / 2) - (sumErrorPrev / 2));
