@@ -207,7 +207,7 @@
             this.ErrorMaxTB.Name = "ErrorMaxTB";
             this.ErrorMaxTB.Size = new System.Drawing.Size(118, 24);
             this.ErrorMaxTB.TabIndex = 20;
-            this.ErrorMaxTB.Text = "0,0000001";
+            this.ErrorMaxTB.Text = "0,0001";
             // 
             // label10
             // 

@@ -99,7 +99,7 @@ namespace Runge_Kutta.Services
 
                 sub = Math.Abs((sumError / 2) - (sumErrorPrev / 2));
 
-                sumErrorPrev = sumError;
+                sumErrorPrev = sumError/2;
                 sumError = 0;
 
             }
